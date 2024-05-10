@@ -128,8 +128,15 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="ChangeInfo.h" />
+    <ClInclude Include="ConsoleProcess.h" />
     <ClInclude Include="Login.h" />
+    <ClInclude Include="Menu.h" />
     <ClInclude Include="Struct.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="ConsoleProcess.cpp" />
+    <ClCompile Include="Login.cpp" />
+    <ClCompile Include="Menu.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

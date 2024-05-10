@@ -3,6 +3,26 @@
   "WorkspaceRootPath": "D:\\code c\u002B\u002B\\ProjectUpGithub\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{BBAF4BD2-9231-4F0D-BEB2-E3D7D01F8056}|KTLTProject\\KTLTProject.vcxproj|D:\\code c\u002B\u002B\\ProjectUpGithub\\KTLTProject\\ConsoleProcess.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{BBAF4BD2-9231-4F0D-BEB2-E3D7D01F8056}|KTLTProject\\KTLTProject.vcxproj|solutionrelative:KTLTProject\\ConsoleProcess.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BBAF4BD2-9231-4F0D-BEB2-E3D7D01F8056}|KTLTProject\\KTLTProject.vcxproj|D:\\code c\u002B\u002B\\ProjectUpGithub\\KTLTProject\\Login.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{BBAF4BD2-9231-4F0D-BEB2-E3D7D01F8056}|KTLTProject\\KTLTProject.vcxproj|solutionrelative:KTLTProject\\Login.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BBAF4BD2-9231-4F0D-BEB2-E3D7D01F8056}|KTLTProject\\KTLTProject.vcxproj|D:\\code c\u002B\u002B\\ProjectUpGithub\\KTLTProject\\Menu.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{BBAF4BD2-9231-4F0D-BEB2-E3D7D01F8056}|KTLTProject\\KTLTProject.vcxproj|solutionrelative:KTLTProject\\Menu.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BBAF4BD2-9231-4F0D-BEB2-E3D7D01F8056}|KTLTProject\\KTLTProject.vcxproj|D:\\code c\u002B\u002B\\ProjectUpGithub\\KTLTProject\\Menu.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{BBAF4BD2-9231-4F0D-BEB2-E3D7D01F8056}|KTLTProject\\KTLTProject.vcxproj|solutionrelative:KTLTProject\\Menu.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BBAF4BD2-9231-4F0D-BEB2-E3D7D01F8056}|KTLTProject\\KTLTProject.vcxproj|D:\\code c\u002B\u002B\\ProjectUpGithub\\KTLTProject\\ConsoleProcess.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{BBAF4BD2-9231-4F0D-BEB2-E3D7D01F8056}|KTLTProject\\KTLTProject.vcxproj|solutionrelative:KTLTProject\\ConsoleProcess.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{BBAF4BD2-9231-4F0D-BEB2-E3D7D01F8056}|KTLTProject\\KTLTProject.vcxproj|D:\\code c\u002B\u002B\\ProjectUpGithub\\KTLTProject\\Struct.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{BBAF4BD2-9231-4F0D-BEB2-E3D7D01F8056}|KTLTProject\\KTLTProject.vcxproj|solutionrelative:KTLTProject\\Struct.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
@@ -22,7 +42,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 3,
+          "SelectedChildIndex": 1,
           "Children": [
             {
               "$type": "Bookmark",
@@ -30,7 +50,72 @@
             },
             {
               "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "ConsoleProcess.cpp",
+              "DocumentMoniker": "D:\\code c\u002B\u002B\\ProjectUpGithub\\KTLTProject\\ConsoleProcess.cpp",
+              "RelativeDocumentMoniker": "KTLTProject\\ConsoleProcess.cpp",
+              "ToolTip": "D:\\code c\u002B\u002B\\ProjectUpGithub\\KTLTProject\\ConsoleProcess.cpp",
+              "RelativeToolTip": "KTLTProject\\ConsoleProcess.cpp",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAoAAAABAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2024-05-10T16:59:30.824Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
               "DocumentIndex": 1,
+              "Title": "Login.cpp",
+              "DocumentMoniker": "D:\\code c\u002B\u002B\\ProjectUpGithub\\KTLTProject\\Login.cpp",
+              "RelativeDocumentMoniker": "KTLTProject\\Login.cpp",
+              "ToolTip": "D:\\code c\u002B\u002B\\ProjectUpGithub\\KTLTProject\\Login.cpp",
+              "RelativeToolTip": "KTLTProject\\Login.cpp",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2024-05-10T16:58:33.409Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Menu.cpp",
+              "DocumentMoniker": "D:\\code c\u002B\u002B\\ProjectUpGithub\\KTLTProject\\Menu.cpp",
+              "RelativeDocumentMoniker": "KTLTProject\\Menu.cpp",
+              "ToolTip": "D:\\code c\u002B\u002B\\ProjectUpGithub\\KTLTProject\\Menu.cpp",
+              "RelativeToolTip": "KTLTProject\\Menu.cpp",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2024-05-10T16:58:24.818Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Menu.h",
+              "DocumentMoniker": "D:\\code c\u002B\u002B\\ProjectUpGithub\\KTLTProject\\Menu.h",
+              "RelativeDocumentMoniker": "KTLTProject\\Menu.h",
+              "ToolTip": "D:\\code c\u002B\u002B\\ProjectUpGithub\\KTLTProject\\Menu.h",
+              "RelativeToolTip": "KTLTProject\\Menu.h",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAB4AAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2024-05-10T16:57:52.193Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "ConsoleProcess.h",
+              "DocumentMoniker": "D:\\code c\u002B\u002B\\ProjectUpGithub\\KTLTProject\\ConsoleProcess.h",
+              "RelativeDocumentMoniker": "KTLTProject\\ConsoleProcess.h",
+              "ToolTip": "D:\\code c\u002B\u002B\\ProjectUpGithub\\KTLTProject\\ConsoleProcess.h",
+              "RelativeToolTip": "KTLTProject\\ConsoleProcess.h",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAB0AAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2024-05-10T16:56:59.468Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
               "Title": "Login.h",
               "DocumentMoniker": "D:\\code c\u002B\u002B\\ProjectUpGithub\\KTLTProject\\Login.h",
               "RelativeDocumentMoniker": "KTLTProject\\Login.h",
@@ -38,12 +123,11 @@
               "RelativeToolTip": "KTLTProject\\Login.h",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAABAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2024-05-09T15:38:46.905Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-05-09T15:38:46.905Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 7,
               "Title": "ChangeInfo.h",
               "DocumentMoniker": "D:\\code c\u002B\u002B\\ProjectUpGithub\\KTLTProject\\ChangeInfo.h",
               "RelativeDocumentMoniker": "KTLTProject\\ChangeInfo.h",
@@ -51,12 +135,11 @@
               "RelativeToolTip": "KTLTProject\\ChangeInfo.h",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAQAAAAjAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2024-05-09T15:37:42.983Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-05-09T15:37:42.983Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 5,
               "Title": "Struct.h",
               "DocumentMoniker": "D:\\code c\u002B\u002B\\ProjectUpGithub\\KTLTProject\\Struct.h",
               "RelativeDocumentMoniker": "KTLTProject\\Struct.h",
