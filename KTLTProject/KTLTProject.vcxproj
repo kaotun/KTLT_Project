@@ -131,9 +131,11 @@
     <ClInclude Include="ConsoleProcess.h" />
     <ClInclude Include="Login.h" />
     <ClInclude Include="Menu.h" />
+    <ClInclude Include="StaffFunction.h" />
     <ClInclude Include="Struct.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="ChangeInfo.cpp" />
     <ClCompile Include="ConsoleProcess.cpp" />
     <ClCompile Include="Login.cpp" />
     <ClCompile Include="Menu.cpp" />
