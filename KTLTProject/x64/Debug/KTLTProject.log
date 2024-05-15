@@ -1,0 +1,8 @@
+﻿  ChangeInfo.cpp
+  ConsoleProcess.cpp
+  Login.cpp
+  Menu.cpp
+  Generating Code...
+ChangeInfo.obj : error LNK2019: unresolved external symbol "void __cdecl InsertPassword(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > &)" (?InsertPassword@@YAXAEAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z) referenced in function "void __cdecl ChangePassword(struct User &)" (?ChangePassword@@YAXAEAUUser@@@Z)
+MSVCRTD.lib(exe_main.obj) : error LNK2019: unresolved external symbol main referenced in function "int __cdecl invoke_main(void)" (?invoke_main@@YAHXZ)
+D:\code c++\ProjectUpGithub\x64\Debug\KTLTProject.exe : fatal error LNK1120: 2 unresolved externals

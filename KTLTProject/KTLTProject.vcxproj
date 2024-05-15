@@ -129,6 +129,7 @@
   <ItemGroup>
     <ClInclude Include="ChangeInfo.h" />
     <ClInclude Include="ConsoleProcess.h" />
+    <ClInclude Include="ListClass.h" />
     <ClInclude Include="Login.h" />
     <ClInclude Include="Menu.h" />
     <ClInclude Include="StaffFunction.h" />
