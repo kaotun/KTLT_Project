@@ -127,6 +127,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="AddStudent.h" />
     <ClInclude Include="ChangeInfo.h" />
     <ClInclude Include="ConsoleProcess.h" />
     <ClInclude Include="CourseFunction.h" />

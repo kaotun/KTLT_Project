@@ -39,6 +39,9 @@
     <ClInclude Include="CourseFunction.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="AddStudent.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Menu.cpp">
