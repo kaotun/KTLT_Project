@@ -3,6 +3,14 @@
   "WorkspaceRootPath": "D:\\code c\u002B\u002B\\ProjectUpGithub\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{BBAF4BD2-9231-4F0D-BEB2-E3D7D01F8056}|KTLTProject\\KTLTProject.vcxproj|D:\\code c\u002B\u002B\\ProjectUpGithub\\KTLTProject\\ReadData.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{BBAF4BD2-9231-4F0D-BEB2-E3D7D01F8056}|KTLTProject\\KTLTProject.vcxproj|solutionrelative:KTLTProject\\ReadData.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BBAF4BD2-9231-4F0D-BEB2-E3D7D01F8056}|KTLTProject\\KTLTProject.vcxproj|D:\\code c\u002B\u002B\\ProjectUpGithub\\KTLTProject\\AddStudent.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{BBAF4BD2-9231-4F0D-BEB2-E3D7D01F8056}|KTLTProject\\KTLTProject.vcxproj|solutionrelative:KTLTProject\\AddStudent.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{BBAF4BD2-9231-4F0D-BEB2-E3D7D01F8056}|KTLTProject\\KTLTProject.vcxproj|D:\\code c\u002B\u002B\\ProjectUpGithub\\KTLTProject\\AddStudent.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{BBAF4BD2-9231-4F0D-BEB2-E3D7D01F8056}|KTLTProject\\KTLTProject.vcxproj|solutionrelative:KTLTProject\\AddStudent.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
@@ -71,6 +79,32 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
+              "Title": "ReadData.h",
+              "DocumentMoniker": "D:\\code c\u002B\u002B\\ProjectUpGithub\\KTLTProject\\ReadData.h",
+              "RelativeDocumentMoniker": "KTLTProject\\ReadData.h",
+              "ToolTip": "D:\\code c\u002B\u002B\\ProjectUpGithub\\KTLTProject\\ReadData.h",
+              "RelativeToolTip": "KTLTProject\\ReadData.h",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAACEAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2024-05-19T15:07:16.269Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "AddStudent.cpp",
+              "DocumentMoniker": "D:\\code c\u002B\u002B\\ProjectUpGithub\\KTLTProject\\AddStudent.cpp",
+              "RelativeDocumentMoniker": "KTLTProject\\AddStudent.cpp",
+              "ToolTip": "D:\\code c\u002B\u002B\\ProjectUpGithub\\KTLTProject\\AddStudent.cpp",
+              "RelativeToolTip": "KTLTProject\\AddStudent.cpp",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2024-05-19T15:06:30.154Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
               "Title": "AddStudent.h",
               "DocumentMoniker": "D:\\code c\u002B\u002B\\ProjectUpGithub\\KTLTProject\\AddStudent.h",
               "RelativeDocumentMoniker": "KTLTProject\\AddStudent.h",
@@ -83,7 +117,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 4,
               "Title": "CourseFunction.h",
               "DocumentMoniker": "D:\\code c\u002B\u002B\\ProjectUpGithub\\KTLTProject\\CourseFunction.h",
               "RelativeDocumentMoniker": "KTLTProject\\CourseFunction.h",
@@ -91,12 +125,11 @@
               "RelativeToolTip": "KTLTProject\\CourseFunction.h",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAABIAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2024-05-16T16:49:26.9Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-05-16T16:49:26.9Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 5,
               "Title": "ListClass.h",
               "DocumentMoniker": "D:\\code c\u002B\u002B\\ProjectUpGithub\\KTLTProject\\ListClass.h",
               "RelativeDocumentMoniker": "KTLTProject\\ListClass.h",
@@ -108,7 +141,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 6,
               "Title": "StaffFunction.h",
               "DocumentMoniker": "D:\\code c\u002B\u002B\\ProjectUpGithub\\KTLTProject\\StaffFunction.h",
               "RelativeDocumentMoniker": "KTLTProject\\StaffFunction.h",
@@ -120,7 +153,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 11,
               "Title": "ChangeInfo.cpp",
               "DocumentMoniker": "D:\\code c\u002B\u002B\\ProjectUpGithub\\KTLTProject\\ChangeInfo.cpp",
               "RelativeDocumentMoniker": "KTLTProject\\ChangeInfo.cpp",
@@ -132,7 +165,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 7,
               "Title": "Login.h",
               "DocumentMoniker": "D:\\code c\u002B\u002B\\ProjectUpGithub\\KTLTProject\\Login.h",
               "RelativeDocumentMoniker": "KTLTProject\\Login.h",
@@ -144,7 +177,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 12,
+              "DocumentIndex": 14,
               "Title": "ConsoleProcess.cpp",
               "DocumentMoniker": "D:\\code c\u002B\u002B\\ProjectUpGithub\\KTLTProject\\ConsoleProcess.cpp",
               "RelativeDocumentMoniker": "KTLTProject\\ConsoleProcess.cpp",
@@ -156,7 +189,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 11,
+              "DocumentIndex": 13,
               "Title": "Login.cpp",
               "DocumentMoniker": "D:\\code c\u002B\u002B\\ProjectUpGithub\\KTLTProject\\Login.cpp",
               "RelativeDocumentMoniker": "KTLTProject\\Login.cpp",
@@ -168,7 +201,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
+              "DocumentIndex": 12,
               "Title": "Menu.cpp",
               "DocumentMoniker": "D:\\code c\u002B\u002B\\ProjectUpGithub\\KTLTProject\\Menu.cpp",
               "RelativeDocumentMoniker": "KTLTProject\\Menu.cpp",
@@ -180,7 +213,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 8,
               "Title": "Menu.h",
               "DocumentMoniker": "D:\\code c\u002B\u002B\\ProjectUpGithub\\KTLTProject\\Menu.h",
               "RelativeDocumentMoniker": "KTLTProject\\Menu.h",
@@ -192,7 +225,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 9,
               "Title": "ConsoleProcess.h",
               "DocumentMoniker": "D:\\code c\u002B\u002B\\ProjectUpGithub\\KTLTProject\\ConsoleProcess.h",
               "RelativeDocumentMoniker": "KTLTProject\\ConsoleProcess.h",
@@ -204,7 +237,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 10,
               "Title": "ChangeInfo.h",
               "DocumentMoniker": "D:\\code c\u002B\u002B\\ProjectUpGithub\\KTLTProject\\ChangeInfo.h",
               "RelativeDocumentMoniker": "KTLTProject\\ChangeInfo.h",
@@ -216,7 +249,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 3,
               "Title": "Struct.h",
               "DocumentMoniker": "D:\\code c\u002B\u002B\\ProjectUpGithub\\KTLTProject\\Struct.h",
               "RelativeDocumentMoniker": "KTLTProject\\Struct.h",
@@ -224,8 +257,7 @@
               "RelativeToolTip": "KTLTProject\\Struct.h",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAADoAAAASAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2024-05-09T15:36:27.411Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-05-09T15:36:27.411Z"
             }
           ]
         }
