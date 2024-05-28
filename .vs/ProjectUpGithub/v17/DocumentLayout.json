@@ -3,12 +3,12 @@
   "WorkspaceRootPath": "D:\\code c\u002B\u002B\\ProjectUpGithub\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{BBAF4BD2-9231-4F0D-BEB2-E3D7D01F8056}|KTLTProject\\KTLTProject.vcxproj|D:\\code c\u002B\u002B\\ProjectUpGithub\\KTLTProject\\AddStudent.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{BBAF4BD2-9231-4F0D-BEB2-E3D7D01F8056}|KTLTProject\\KTLTProject.vcxproj|solutionrelative:KTLTProject\\AddStudent.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{BBAF4BD2-9231-4F0D-BEB2-E3D7D01F8056}|KTLTProject\\KTLTProject.vcxproj|D:\\code c\u002B\u002B\\ProjectUpGithub\\KTLTProject\\Menu.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{BBAF4BD2-9231-4F0D-BEB2-E3D7D01F8056}|KTLTProject\\KTLTProject.vcxproj|solutionrelative:KTLTProject\\Menu.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BBAF4BD2-9231-4F0D-BEB2-E3D7D01F8056}|KTLTProject\\KTLTProject.vcxproj|D:\\code c\u002B\u002B\\ProjectUpGithub\\KTLTProject\\AddStudent.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{BBAF4BD2-9231-4F0D-BEB2-E3D7D01F8056}|KTLTProject\\KTLTProject.vcxproj|solutionrelative:KTLTProject\\AddStudent.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{BBAF4BD2-9231-4F0D-BEB2-E3D7D01F8056}|KTLTProject\\KTLTProject.vcxproj|D:\\code c\u002B\u002B\\ProjectUpGithub\\KTLTProject\\Login.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
@@ -70,7 +70,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 2,
+          "SelectedChildIndex": 11,
           "Children": [
             {
               "$type": "Bookmark",
@@ -90,13 +90,13 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 1,
               "Title": "AddStudent.cpp",
               "DocumentMoniker": "D:\\code c\u002B\u002B\\ProjectUpGithub\\KTLTProject\\AddStudent.cpp",
               "RelativeDocumentMoniker": "KTLTProject\\AddStudent.cpp",
               "ToolTip": "D:\\code c\u002B\u002B\\ProjectUpGithub\\KTLTProject\\AddStudent.cpp",
               "RelativeToolTip": "KTLTProject\\AddStudent.cpp",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAgAAAASAAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAoAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
               "WhenOpened": "2024-05-19T15:06:30.154Z",
               "EditorCaption": ""
@@ -195,18 +195,17 @@
               "RelativeToolTip": "KTLTProject\\Login.cpp",
               "ViewState": "AQIAAJUAAAAAAAAAAAAqwLAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2024-05-10T16:58:33.409Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-05-10T16:58:33.409Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 0,
               "Title": "Menu.cpp",
               "DocumentMoniker": "D:\\code c\u002B\u002B\\ProjectUpGithub\\KTLTProject\\Menu.cpp",
               "RelativeDocumentMoniker": "KTLTProject\\Menu.cpp",
               "ToolTip": "D:\\code c\u002B\u002B\\ProjectUpGithub\\KTLTProject\\Menu.cpp",
               "RelativeToolTip": "KTLTProject\\Menu.cpp",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAwAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
               "WhenOpened": "2024-05-10T16:58:24.818Z",
               "EditorCaption": ""
