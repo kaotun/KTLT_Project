@@ -4,8 +4,8 @@
 
 void RewriteInfoFile(User Usertmp) {
     fstream FilePrv, FileAft;
-    string OldName = "file_save/login_info.csv";
-    string NewName = "file_save/login_info_new.csv";
+    string OldName = "Data/InformationOfLogin.csv";
+    string NewName = "Data/InformationOfLogin_new.csv";
     FilePrv.open(OldName, ios::in);
     FileAft.open(NewName, ios::out);
     string temp;
