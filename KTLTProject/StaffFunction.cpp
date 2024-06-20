@@ -295,3 +295,12 @@ void UpDatefileCSV(Semester Semestertmp) {
     remove("Data//year_semester.csv");
     rename("Data//year_semester_new.csv", "Data//year_semester.csv");
 }
+
+void UpDateFileInfo(Semester Semestertmp){
+    fstream file;
+    file.open("Data//SchoolYear//" + Semestertmp.SchoolYear + "//Semester" + Semestertmp.NameSemester + "//SemesterInfo.txt", ios::app);
+    file << "Semester: " << Semestertmp.NameSemester;
+    file << endl << "Start Date: " << Semestertmp.DateBegin;
+    file << endl << "End Date: " << Semestertmp.DateEnd;
+    file.close();
+}
