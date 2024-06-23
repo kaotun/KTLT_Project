@@ -536,3 +536,350 @@ void CreateRegistrationCourse() {
     }
     TextBgColor(0, 15);
 }
+
+int InsertNum(int& n) {
+    char c;
+    string num = "";
+    do {
+        ShowPointer();
+        c = getch();
+        if (c == 8) {
+            if (num.size() > 0) {
+                num.pop_back();
+                GotoXY(ReturnX() - 1, ReturnY());
+                cout << " ";
+                GotoXY(ReturnX() - 1, ReturnY());
+            }
+        }
+        else if (c >= 48 && c <= 57) {
+            cout << c;
+            num.push_back(c);
+        }
+        if (c == 27) {
+            return 0;
+        }
+        if (c == 13) {
+            if (num.size() >= 1) {
+                break;
+            }
+        }
+    } while (true);
+    n = stoi(num, 0, 10);
+    return 1;
+}
+
+int CountLine(string FileName) {
+    fstream file;
+    string line;
+    file.open(FileName, ios::in);
+    int count = 0;
+    while (getline(file, line, '\n'))
+        count++;
+    file.close();
+    return count;
+}
+
+void DetermineYearSemesterNow(string& Year, string& Semester) {
+    fstream file1;
+    string data1;
+    file1.open("Data/year_semester.csv", ios::in);
+    getline(file1, data1);
+    while (!file1.eof()) {
+        getline(file1, data1);
+    }
+    Year = data1.substr(0, 9);
+    Semester = "Semester" + data1.substr(10, 1);
+}
+
+void AddCourse() {
+    char ch;
+    Course course;
+    string Day[7] = { "MON","TUE","WED","THU","FRI","SAT" }, session[4] = { "S1","S2","S3","S4" };
+    system("cls");
+    TextBgColor(4, 7);
+    PrintText("  ____ ___  _   _ ____  ____  _____ ", 40, 2);
+    PrintText(" / ___/ _ \\| | | |  _ \\/ ___|| ____|", 40, 3);
+    PrintText("| |  | | | | | | | |_) \\___ \\| _|   ", 40, 4);
+    PrintText("| |__| |_| | |_| |  _ < ___) | |___ ", 40, 5);
+    PrintText(" \\____\\___/ \\___/|_| \\_\\____/|_____|", 40, 6);
+
+    string year = "", semester = "";
+    DetermineYearSemesterNow(year, semester);
+    if (stoi(semester.substr(8, 1), 0, 10) == 0) {
+        TextBgColor(4, 15);
+        PrintText("YOU HAVEN'T CREATED SEMESTER YET, PRESS ENTER TO BACK TO MENU.", 40, 10);
+        ch = getch();
+    }
+
+    else {
+        DrawRectangle(25, 9, 70, 18, 3);
+        PrintText("COURSE ID: ", 30, 10);
+        PrintText("COURSE NAME: ", 30, 12);
+        PrintText("TEACHER NAME: ", 30, 14);
+        PrintText("NUMBER OF CREDITS: ", 30, 16);
+        PrintText("MAXIMUN OF STUDENT: ", 30, 18);
+        PrintText("DAY OF THE WEEK (MON / TUE / WED / THU / FRI / SAT): ", 30, 20);
+        PrintText("SESSION: S1 (7:30), S2 (9:30), S3 (13:30), S4 (15:30) :", 30, 22);
+
+        DrawRectangle(30, 11, 55, 1, 15);
+        DrawRectangle(30, 13, 55, 1, 15);
+        DrawRectangle(30, 15, 55, 1, 15);
+        DrawRectangle(30, 17, 55, 1, 15);
+        DrawRectangle(30, 19, 55, 1, 15);
+        DrawRectangle(30, 21, 55, 1, 15);
+        DrawRectangle(30, 23, 55, 1, 15);
+        DrawRectangle(30, 24, 55, 1, 15);
+
+
+        ///////////////////////////////////////////
+        do
+        {
+            GotoXY(30, 11);
+            if (InsertString(course.IDCourse, 15) == 0) return;
+            if (CountLine("Data/SchoolYear/" + year + "/" + semester + "/course_info.csv") == 1) break;
+            fstream file;
+            string line;
+            file.open("Data/SchoolYear/" + year + "/" + semester + "/course_info.csv", ios::in);
+            getline(file, line);
+            bool check = false;
+            while (!file.eof()) {
+                getline(file, line, ',');
+                if (line.compare(course.IDCourse) != 0) {
+                    check = true; break;
+                }
+            }
+            if (check == true) break;
+            else {
+                TextBgColor(4, 15);
+                HidePointer();
+                PrintText("ERROR: COURSE ALREADY EXISTS,PRESS ENTER TO TRY AGAIN.", 25, 27);
+                ch = getch();
+                TextBgColor(0, 15);
+                DrawRectangle(25, 27, 80, 1, 15);
+                DrawRectangle(30, 11, 50, 1, 15);
+            }
+        } while (true);
+
+        ShowPointer();
+        GotoXY(30, 13);
+        if (InsertString(course.NameCourse, 20) == 0) return;
+        GotoXY(30, 15);
+        if (InsertString(course.Teacher, 20) == 0) return;
+        GotoXY(30, 17);
+        if (InsertNum(course.NumOfCreadit) == 0) return;
+        GotoXY(30, 19);
+        if (InsertNum(course.MaxStudent) == 0) return;
+        do {
+            GotoXY(30, 21);
+            ShowPointer();
+            if (InsertString(course.DayOfWeek, 15) == 0) return;
+            bool check = false;
+            for (int i = 0; i < 7; i++) {
+                if (course.DayOfWeek.compare(Day[i]) == 0) {
+                    check = true;
+                    break;
+                }
+            }
+            if (check == true) break;
+            else {
+                course.DayOfWeek = "";
+                TextBgColor(4, 15);
+                HidePointer();
+                PrintText("ERROR: YOUR DAY MUST HAVE FORMAT LIKE (MON,TUE,..),PRESS ENTER TO TRY AGAIN.", 25, 27);
+                ch = getch();
+                TextBgColor(0, 15);
+                DrawRectangle(25, 27, 80, 1, 15);
+                DrawRectangle(30, 21, 50, 1, 15);
+            }
+        } while (true);
+
+        do
+        {
+            GotoXY(30, 23);
+            ShowPointer();
+            if (InsertString(course.Session[0], 15) == 0) return;
+            bool check = false;
+            for (int i = 0; i < 4; i++) {
+                if (course.Session[0].compare(session[i]) == 0) {
+                    check = true;
+                    break;
+                }
+            }
+            if (check == true) break;
+            else {
+                course.Session[0] = "";
+                TextBgColor(4, 15);
+                HidePointer();
+                PrintText("ERROR: YOUR SESSION MUST HAVE FORMAT LIKE (S1,S2,..),PRESS ENTER TO TRY AGAIN.", 25, 27);
+                TextBgColor(0, 15);
+                ch = getch();
+                DrawRectangle(25, 27, 80, 1, 15);
+                DrawRectangle(30, 23, 50, 1, 15);
+            }
+        } while (true);
+
+        do
+        {
+            GotoXY(30, 24);
+            ShowPointer();
+            if (InsertString(course.Session[1], 15) == 0) return;
+            int check = 0;
+            for (int i = 0; i < 4; i++) {
+                if (course.Session[1].compare(session[i]) == 0) {
+                    if (course.Session[1].compare(course.Session[0]) == 0)
+                        check = -1;
+                    else check = 1;
+                    break;
+                }
+            }
+            if (check == 1) break;
+            else {
+                course.Session[1] = "";
+                TextBgColor(4, 15);
+                HidePointer();
+                if (check == 0)
+                    PrintText("ERROR: YOUR SESSION MUST HAVE FORMAT LIKE (S1,S2,..),PRESS ENTER TO TRY AGAIN.", 25, 27);
+                else
+                    PrintText("ERROR: YOUR SESSION IS THE SAME AS LAST SESSION ,PRESS ENTER TO TRY AGAIN.", 25, 27);
+                TextBgColor(0, 15);
+                ch = getch();
+                DrawRectangle(25, 27, 80, 1, 15);
+                DrawRectangle(30, 24, 50, 1, 15);
+            }
+        } while (true);
+        fstream file;
+        file.open("Data/SchoolYear/" + year + "/" + semester + "/course_info.csv", ios::app);
+        file << endl << course.IDCourse << "," << course.NameCourse << "," << course.Teacher << "," << course.NumOfCreadit << "," << course.MaxStudent << "," << course.DayOfWeek << "," << course.Session[0] << "," << course.Session[1];
+        file.close();
+
+        file.open("Data/SchoolYear/" + year + "/" + semester + "/Course/" + course.IDCourse + ".csv", ios::out);
+        file << "ID STUDENT,NAME,BIRTHDAY,SEX,ID SOCIAL";
+        file.close();
+        PrintText("CREATE COURSE SUCCESSFUL !!!, PRESS ENTER TO BACK TO MENU.", 25, 27);
+        ch = getch();
+    }
+    TextBgColor(0, 15);
+}
+
+void GetLineInfo(string FileName, int Line, string Column[], int ColumnNum) {
+    if (Line > CountLine(FileName)) cout << "Not exist line";
+    int numLine = CountLine(FileName);
+    fstream file;
+    string data;
+    file.open(FileName, ios::in);
+    for (int i = 1; i <= numLine; i++) {
+        if (i == Line) {
+            for (int j = 0; j < ColumnNum; j++) {
+                if (j != ColumnNum - 1) {
+                    getline(file, data, ',');
+                    Column[j] = data;
+                }
+                else {
+                    getline(file, data);
+                    Column[j] = data;
+                }
+            }
+            break;
+        }
+        else {
+            getline(file, data);
+        }
+    }
+}
+
+/*
+ID[5]: 1
+Name[21]: 9
+Teachar[15]: 34
+Credits[3] 60
+student[5] 76
+Day[5] 88
+Session[5] 98 108
+*/
+
+int InsertString(string& Data, int Limit) {
+    char ch;
+    do
+    {
+        ShowPointer();
+        ch = getch();
+        if (ch == 8) {
+            if (Data.size() > 0) {
+                Data.pop_back();
+                GotoXY(ReturnX() - 1, ReturnY());
+                cout << " ";
+                GotoXY(ReturnX() - 1, ReturnY());
+            }
+        }
+        else if (ch == 32 && Data.size() < Limit) {
+            Data.push_back(ch);
+            cout << " ";
+        }
+        else if (((ch >= 33 && ch <= 57) || (ch >= 65 && ch <= 90) || (ch >= 97 && ch <= 122) || ch == 95) && Data.size() < Limit) {
+            cout << ch;
+            Data.push_back(ch);
+        }
+        if (ch == 27) {
+            return 0;
+        }
+        if (ch == 13) {
+            if (Data.size() > 1) {
+                break;
+            }
+        }
+    } while (true);
+    return 1;
+}
+
+int InsertNum2(string& Data, int Limit) {
+    char ch;
+    do
+    {
+        ch = getch();
+        if (ch == 8) {
+            if (Data.size() > 0) {
+                Data.pop_back();
+                GotoXY(ReturnX() - 1, ReturnY());
+                cout << " ";
+                GotoXY(ReturnX() - 1, ReturnY());
+            }
+        }
+        if (ch == 27) {
+            return 0;
+        }
+        else if ((ch >= 48 && ch <= 57) && Data.size() < Limit) {
+            cout << ch;
+            Data.push_back(ch);
+        }
+    } while (ch != 13);
+    return 1;
+}
+
+int InsertDay(string& Data, int Limit) {
+    string Day[7] = { "MON","TUE","WED","THU","FRI","SAT" };
+    char ch;
+    bool check = false;
+    do
+    {
+        ch = getch();
+        if (ch == 8) {
+            if (Data.size() > 0) {
+                Data.pop_back();
+                GotoXY(ReturnX() - 1, ReturnY());
+                cout << " ";
+                GotoXY(ReturnX() - 1, ReturnY());
+            }
+        }
+        else if ((ch >= 65 && ch <= 90) && Data.size() < Limit) {
+            cout << ch;
+            Data.push_back(ch);
+        }
+        if (ch == 27) {
+            return 0;
+        }
+        for (int i = 0; i < 7; i++) {
+            if (Data.compare(Day[i]) == 0) { check = true; break; }
+        }
+    } while (ch != 13 || check == false);
+    return 1;
+}
