@@ -1496,3 +1496,343 @@ int CheckCourseSession() {
     }
     TextBgColor(0, 15);
 }
+
+void ExportScoreBoardInterface(User A, string Year, string Semester, int CurrentLine, int LineInConsole) {
+    bool checkOut = false;
+    do {
+        char ch;
+        system("cls");
+        TextBgColor(4, 7);
+        PrintText(" _______  ______   ___  ____ _____ ", 30, 0);
+        PrintText("| ____\\ \\/ /  _ \\ / _ \\|  _ \\_   _|", 30, 1);
+        PrintText("|  _|  \\  /| |_) | | | | |_) || |  ", 30, 2);
+        PrintText("| |___ /  \\|  __/| |_| |  _ < | |  ", 30, 3);
+        PrintText("|_____/_/\\_\\_|    \\___/|_| \\_\\|_|  ", 30, 4);
+        PrintText(" ____   ____ ___  ____  _____ ____   ___    _    ____  ____  ", 30, 5);
+        PrintText("/ ___| / ___/ _ \\|  _ \\| ____| __ ) / _ \\  / \\  |  _ \\|  _ \\ ", 30, 6);
+        PrintText("\\___ \\| |  | | | | |_) |  _| |  _ \\| | | |/ _ \\ | |_) | | | |", 30, 7);
+        PrintText(" ___) | |__| |_| |  _ <| |___| |_) | |_| / ___ \\|  _ <| |_| |", 30, 8);
+        PrintText("|____/ \\____\\___/|_| \\_\\_____|____/ \\___/_/   \\_\\_| \\_\\____/ ", 30, 9);
+
+        DrawRectangle(97, 0, 23, 4, 3);
+        TextBgColor(4, 3);
+        PrintText("-[c]: CHANGE SCHOOL", 97, 0);
+        PrintText(" YEAR", 97, 1);
+        PrintText("-[a]: EXPORT ALL COURSE", 97, 2);
+        PrintText("-[ESC]: BACK TO MENU", 97, 3);
+
+        if (stoi(Semester.substr(8, 1), 0, 10) == 0) {
+            TextBgColor(4, 15);
+            PrintText("HAVEN'T CREATE SEMESTER YET, PRESS ENTER TO BACK TO MENU.", 40, 10);
+            char ch = getch();
+            checkOut = true;
+        }
+        else {
+            int y = 11;
+            string column[8];
+            string FileName = "Data/SchoolYear/" + Year + "/" + Semester + "/course_info.csv";
+            int lineNum = CountLine(FileName);
+            if (lineNum == 1) {
+                TextBgColor(4, 15);
+                PrintText("THERE ISN'T ANY COURSE EXIST, PRESS ENTER TO BACK TO MENU.", 30, 14);
+                ch = getch();
+                TextBgColor(0, 15);
+                checkOut = true;
+                break;
+            }
+            DrawRectangle(0, 10, 120, 15, 3);
+            int a[8] = { 2,13,35,52,73,88,95,105 };
+            int b[8] = { 1,9,34,60,76,88,98,108 };
+            if (lineNum == 1) {
+                string column[8];
+                GetLineInfo(FileName, 1, column, 8);
+                for (int i = 0; i < 8; i++) {
+                    PrintText(column[i], a[i], 11);
+
+                }
+                ch = getch();
+            }
+            else {
+                DrawList(8, FileName, 11, a, b, lineNum, CurrentLine - LineInConsole + 1);
+                HidePointer();
+
+                GetLineInfo("Data/SchoolYear/" + Year + "/" + Semester + "/course_info.csv", CurrentLine, column, 8);
+                DrawRectangle(1, y + LineInConsole, 110, 1, 14);
+                TextBgColor(0, 14);
+                for (int i = 0; i < 8; i++)
+                    PrintText(column[i], b[i], y + LineInConsole);
+
+                do {
+                    HidePointer();
+                    ch = getch();
+                    //[ESC]
+                    if (ch == 27) {
+                        TextBgColor(0, 15);
+                        checkOut = true;
+                        break;
+                    }
+                    if (ch == 72 && CurrentLine > 2) //up
+                    {
+                        CurrentLine--;
+                        LineInConsole--;
+                        if (LineInConsole + y <= 11) {
+                            LineInConsole = 12;
+                            DrawRectangle(0, 10, 120, 15, 15);
+                            DrawRectangle(0, 10, 120, 15, 3);
+                            DrawList(8, "Data/SchoolYear/" + Year + "/" + Semester + "/course_info.csv", y, a, b, lineNum, CurrentLine - 11);
+                            GetLineInfo("Data/SchoolYear/" + Year + "/" + Semester + "/course_info.csv", CurrentLine, column, 8);
+                            DrawRectangle(1, y + LineInConsole, 110, 1, 14);
+                            TextBgColor(0, 14);
+                            for (int i = 0; i < 8; i++) {
+                                PrintText(column[i], b[i], y + LineInConsole);
+                            }
+                        }
+                        else
+                            MoveUp("Data/SchoolYear/" + Year + "/" + Semester + "/course_info.csv", CurrentLine, 8, b, y, column, LineInConsole, 110, 1);
+
+                    }
+                    if (ch == 80 && CurrentLine < lineNum) //down
+                    {
+                        CurrentLine++;
+                        LineInConsole++;
+                        if (LineInConsole + y > 23) {
+                            LineInConsole = 1;
+                            DrawRectangle(0, 10, 120, 15, 15);
+                            DrawRectangle(0, 10, 120, 15, 3);
+                            DrawList(8, "Data/SchoolYear/" + Year + "/" + Semester + "/course_info.csv", y, a, b, lineNum, CurrentLine);
+                            GetLineInfo("Data/SchoolYear/" + Year + "/" + Semester + "/course_info.csv", CurrentLine, column, 8);
+                            DrawRectangle(1, y + LineInConsole, 110, 1, 14);
+                            TextBgColor(0, 14);
+                            for (int i = 0; i < 8; i++) {
+                                PrintText(column[i], b[i], y + LineInConsole);
+                            }
+                        }
+                        else
+                            MoveDown("Data/SchoolYear/" + Year + "/" + Semester + "/course_info.csv", CurrentLine, 8, b, y, column, LineInConsole, 110, 1);
+                    }
+
+                    if (ch == 13) {
+                        ExportSB(Year, Semester, column[0]);
+                        DrawRectangle(40, 15, 25, 5, 4);
+                        TextBgColor(14, 4);
+                        PrintText("EXPORT SUCCESSFULLY !!!", 41, 17);
+                        ch = getch();
+                        TextBgColor(0, 15);
+                        break;
+                        //exportScoreboardInterface(A, year, semester, CurrentLine, lineInConsole);
+                    }
+
+                    if (ch == 'a') {
+                        fstream file;
+                        file.open("Data/SchoolYear/" + Year + "/" + Semester + "/course_info.csv", ios::in);
+                        if (!file.is_open()) {
+                            cout << "Can't open file" << endl;
+                            Sleep(900);
+                            checkOut = true;
+                            break;
+                        }
+                        string courseID;
+                        getline(file, courseID);
+                        while (!file.eof()) {
+                            if (courseID.size() == 1) break;
+                            getline(file, courseID, ',');
+                            ExportSB(Year, Semester, courseID);
+                            getline(file, courseID);
+                        }
+                        DrawRectangle(40, 15, 35, 5, 4);
+                        TextBgColor(15, 4);
+                        PrintText("EXPORT ALL COURSE SUCCESSFULLY !!!", 41, 17);
+                        ch = getch();
+                        TextBgColor(0, 15);
+                        break;
+                        //exportScoreboardInterface(A, year, semester, CurrentLine, lineInConsole);
+                    }
+
+                    if (ch == 'c') {
+                        SchoolYear s;
+                        ChangeYearSemester(s);
+                        Year = s.Year;
+                        Semester = s.SemesterSchool.NameSemester;
+                        break;
+                        //exportScoreboardInterface(A, s.year, s.semester.Name, CurrentLine, lineInConsole);
+                    }
+                    TextBgColor(0, 15);
+                } while (true);
+            }
+        }
+        TextBgColor(0, 15);
+    } while (checkOut == false);
+}
+
+void ExportSB(string SchoolYear, string Semester, string CourseID) {
+    fstream fileScore, fileList;
+    fileScore.open("Score/Export/" + SchoolYear + "_" + Semester + "_" + CourseID + ".csv", ios::out);
+    fileScore << "NO,STUDENT ID,NAME,TOTAL MARK,FINAL MARK,MIDTERM MARK,OTHER MARK";
+    fileList.open("Data/SchoolYear/" + SchoolYear + "/" + Semester + "/Course/" + CourseID + ".csv", ios::in);
+    string data;
+    getline(fileList, data);
+    int i = 1;
+    while (!fileList.eof()) {
+        fileScore << endl << i;
+        getline(fileList, data, ',');
+        fileScore << "," << data;
+        getline(fileList, data, ',');
+        fileScore << "," << data;
+        getline(fileList, data);
+        i++;
+        if (i >= 300) break;
+    }
+}
+
+void ImportScoreBoard(string Year, string Semester, string CourseID, string FileName) {
+    fstream file, fileScore;
+    file.open(FileName + ".csv", ios::in);
+    fileScore.open("Data//SchoolYear//" + Year + "//" + Semester + "//Course//score//" + CourseID + ".csv", ios::out);
+    string data;
+    getline(file, data);
+    fileScore << data;
+    while (!file.eof()) {
+        getline(file, data);
+        fileScore << endl << data;
+    }
+    file.close();
+    fileScore.close();
+}
+
+string InputFileName() {
+    ShowPointer();
+    DrawRectangle(20, 13, 90, 4, 3);
+    TextBgColor(0, 3);
+    PrintText("ENTER PATH TO FILE NAME (EX: C:/Users/2023-2024_Semester3_TLDC ) :", 20, 13);
+    string FileName = "";
+    DrawRectangle(21, 14.5, 50, 1, 15);
+    TextBgColor(0, 15);
+    GotoXY(21, 14.5);
+    //getline(cin,FileName);
+
+    char ch;
+    do
+    {
+        ch = getch();
+        if (ch == 8) {
+            if (FileName.size() > 0) {
+                FileName.pop_back();
+                GotoXY(ReturnX() - 1, ReturnY());
+                cout << " ";
+                GotoXY(ReturnX() - 1, ReturnY());
+            }
+        }
+        if (((ch >= 47 && ch <= 58) || (ch >= 65 && ch <= 90) || (ch >= 97 && ch <= 122) || ch == 95 || ch == 45 || ch == 32) && FileName.size() < 50) {
+            cout << ch;
+            FileName.push_back(ch);
+        }
+        if (ch == 27) {
+            return "";
+        }
+    } while (ch != 13 || FileName.size() == 0);
+    return FileName;
+}
+
+void ImportScoreBoardUI() {
+    char ch;
+    system("cls");
+    DrawASCIIImport();
+    User user;
+    SchoolYear SY;
+    string FileName;
+    DetermineYearSemesterNow(SY.Year, SY.SemesterSchool.NameSemester);
+    string year, semester;
+    DetermineYearSemesterNow(year, semester);
+    if (stoi(semester.substr(8, 1), 0, 10) == 0) {
+        TextBgColor(4, 15);
+        PrintText("HAVEN'T CREATE SEMESTER YET, PRESS ENTER TO BACK TO MENU.", 40, 10);
+        char ch = getch();
+    }
+    else {
+        string ImportMenu[] = { "1. Import from file library.", "2. Import file by path.", "3.Back to Menu" };
+        int option;
+        do {
+
+            bool flagout = false;
+            system("cls");
+            DrawMenu(ImportMenu, 3, 45, 10, 2, &DrawASCIIImport);
+            option = MoveAndChoose(3, ImportMenu, 45, 10, 2);
+            switch (option)
+            {
+            case 0: {
+                system("cls");
+                while (true) {
+                    try {
+                        Course* SLC = SelectCourse(user, SY, &ReadFileListCourse, &DrawASCIIImport);
+                        if (SLC == NULL) {
+                            flagout = true;
+                            break;
+                        }
+                        FileName = "Score/Import/" + SY.Year + "_" + SY.SemesterSchool.NameSemester + "_" + SLC->IDCourse;
+                        ifstream f;
+                        f.open(FileName + ".csv");
+                        if (!f.is_open()) {
+                            DrawRectangle(3, 14, 115, 4, 4);
+                            PrintText("The score file for this course is not in the file library. ", 35, 15);
+                            PrintText("Please pass it in file library or import by path. ", 40, 16);
+                            Sleep(4500);
+                            f.close();
+                            continue;
+                        }
+                        else {
+                            f.close();
+                            break;
+                        }
+                    }
+                    catch (const char* err) {
+                        string s = string(err);
+                        s.pop_back();
+                        s += " to import.";
+                        DrawRectangle(3, 14, 115, 3, 4);
+                        PrintText(err, 45, 15);
+                        TextBgColor(0, 15);
+                        Sleep(1800);
+                        break;
+                    }
+                }
+                break;
+            }
+            case 1: {
+                system("cls");
+                DrawASCIIImport();
+                FileName = InputFileName();
+                if (FileName == "") {
+                    continue;
+                }
+                break;
+            }
+            default:
+                return;
+            }
+            if (flagout == true) {
+                continue;
+            }
+            fstream file;
+            file.open(FileName + ".csv", ios::in);
+            if (!file.is_open()) {
+                DrawRectangle(40, 15, 25, 5, 4);
+                TextBgColor(15, 4);
+                PrintText("FILE DOESN'T EXIST !!!", 41, 17);
+                ch = getch();
+                TextBgColor(0, 15);
+            }
+            else {
+                HidePointer();
+                string info = FileName.substr(FileName.find_last_of("/") + 1, FileName.size() - FileName.find_last_of("/"));
+                ImportScoreBoard(info.substr(0, 9), info.substr(10, 9), info.substr(20, info.size() - 1), FileName);
+                DrawRectangle(40, 15, 25, 5, 4);
+                TextBgColor(15, 4);
+                PrintText("IMPORT SUCCESSFUL !!!", 41, 17);
+                ch = getch();
+                TextBgColor(0, 15);
+            }
+            file.close();
+        } while (true);
+        TextBgColor(0, 15);
+    }
+}
