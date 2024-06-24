@@ -883,3 +883,616 @@ int InsertDay(string& Data, int Limit) {
     } while (ch != 13 || check == false);
     return 1;
 }
+
+int InsertSession(string& Data, int Limit) {
+    string session[4] = { "S1","S2","S3","S4" };
+    char ch;
+    bool check = false;
+    do
+    {
+        ch = getch();
+        if (ch == 8) {
+            if (Data.size() > 0) {
+                Data.pop_back();
+                GotoXY(ReturnX() - 1, ReturnY());
+                cout << " ";
+                GotoXY(ReturnX() - 1, ReturnY());
+            }
+        }
+        else if (((ch >= 65 && ch <= 90) || (ch >= 48 && ch <= 57)) && Data.size() < Limit) {
+            cout << ch;
+            Data.push_back(ch);
+        }
+        if (ch == 27) {
+            return 0;
+        }
+        for (int i = 0; i < 4; i++) {
+            if (Data.compare(session[i]) == 0) { check = true; break; }
+        }
+    } while (ch != 13 || check == false);
+    return 1;
+}
+
+void UpdateFileCourse(int CurrentColumn, int CurrentLine, string Column[], string Year, string Semester) {
+    fstream file_be, file_af;
+    string newdata, line;
+    string filename = "Data//SchoolYear//" + Year + "//" + Semester + "//course_info.csv";
+    for (int i = 0; i < 8; i++) {
+        if (i != 7) {
+            newdata = newdata + Column[i] + ",";
+        }
+        else newdata = newdata + Column[i];
+    }
+    file_be.open(filename, ios::in);
+    file_af.open("Data//SchoolYear//" + Year + "//" + Semester + "//course_info_new.csv", ios::app);
+    getline(file_be, line);
+    file_af << line;
+    int i = 2;
+    while (!file_be.eof()) {
+        if (i == CurrentLine) {
+            file_af << endl << newdata;
+            getline(file_be, line);
+        }
+        else {
+            getline(file_be, line);
+            file_af << endl << line;
+        }
+        i++;
+    }
+
+    char* a = new char[filename.size() + 1];
+    strcpy(a, filename.c_str());
+    a[filename.size()] = '\0';
+    string filename_new = "Data/SchoolYear/" + Year + "/" + Semester + "/course_info_new.csv";
+    char* b = new char[filename_new.size() + 1];
+    strcpy(b, filename_new.c_str());
+    b[filename_new.size()] = '\0';
+    file_be.close();
+    file_af.close();
+    remove(a);
+    rename(b, a);
+
+}
+
+void EditInforCourse(int y, int CurrentLine, string Column[], string Year, string Semester) {
+    char ch;
+    int CurrentColumn = 2, pos[8] = { 1,9,32,63,79,91,101,111 }, limit[8] = { 5,20,20,3,5,5,2,2 };
+    DrawRectangle(pos[CurrentColumn], y, 5, 1, 15);
+    TextBgColor(0, 15);
+    PrintText(Column[2], pos[CurrentColumn], y);
+    do
+    {
+        ch = getch();
+        //ESC
+        if (ch == 27)
+            break;
+        //Left 
+        if (ch == 75 && CurrentColumn > 2) {
+            DrawRectangle(pos[CurrentColumn], y, limit[CurrentColumn], 1, 14);
+            TextBgColor(0, 14);
+            PrintText(Column[CurrentColumn], pos[CurrentColumn], y);
+
+            CurrentColumn--;
+            DrawRectangle(pos[CurrentColumn], y, limit[CurrentColumn], 1, 15);
+            TextBgColor(0, 15);
+            PrintText(Column[CurrentColumn], pos[CurrentColumn], y);
+        }
+        //Right
+        if (ch == 77 && CurrentColumn < 7) {
+            DrawRectangle(pos[CurrentColumn], y, limit[CurrentColumn], 1, 14);
+            TextBgColor(0, 14);
+            PrintText(Column[CurrentColumn], pos[CurrentColumn], y);
+
+            CurrentColumn++;
+            DrawRectangle(pos[CurrentColumn], y, limit[CurrentColumn], 1, 15);
+            TextBgColor(0, 15);
+            PrintText(Column[CurrentColumn], pos[CurrentColumn], y);
+        }
+
+        //[ENTER]
+        if (ch == 13) {
+            ShowPointer();
+            TextBgColor(0, 15);
+
+            if (CurrentColumn == 2) {
+                GotoXY(pos[CurrentColumn] + Column[CurrentColumn].size(), y);
+                InsertString(Column[2], limit[CurrentColumn]);
+            }
+            else if (CurrentColumn == 3) {
+                GotoXY(pos[CurrentColumn] + Column[CurrentColumn].size(), y);
+                InsertNum2(Column[CurrentColumn], limit[CurrentColumn]);
+            }
+            else if (CurrentColumn == 4) {
+                GotoXY(pos[CurrentColumn] + Column[CurrentColumn].size(), y);
+                InsertNum2(Column[CurrentColumn], limit[CurrentColumn]);
+            }
+            else if (CurrentColumn == 5) {
+                GotoXY(pos[CurrentColumn] + Column[CurrentColumn].size(), y);
+                InsertDay(Column[CurrentColumn], limit[CurrentColumn]);
+            }
+            else {
+                GotoXY(pos[CurrentColumn] + Column[CurrentColumn].size(), y);
+                InsertSession(Column[CurrentColumn], limit[CurrentColumn]);
+            }
+            HidePointer();
+            UpdateFileCourse(CurrentColumn, CurrentLine, Column, Year, Semester);
+        }
+    } while (true);
+}
+
+void DeleteFile(string FileName) {
+    char* a = new char[FileName.size() + 1];
+    strcpy(a, FileName.c_str());
+    a[FileName.size()] = '\0';
+    remove(a);
+}
+
+void RenameFile(string OldName, string NewName) {
+    char* a = new char[OldName.size() + 1];
+    strcpy(a, OldName.c_str());
+    a[OldName.size()] = '\0';
+
+    char* b = new char[NewName.size() + 1];
+    strcpy(b, NewName.c_str());
+    b[NewName.size()] = '\0';
+
+    rename(a, b);
+}
+
+void DeleteCourse(string FileName, string CourseName, int CurrentLine, string Year, string Semester) {
+    fstream file_be, file_af;
+    string newdata, line;
+    file_be.open(FileName, ios::in);
+    file_af.open("Data//SchoolYear//" + Year + "//" + Semester + "//course_info_new.csv", ios::app);
+    getline(file_be, line);
+    file_af << line;
+    int i = 2;
+    while (!file_be.eof()) {
+        if (i == CurrentLine) {
+            getline(file_be, line);
+        }
+        else {
+            getline(file_be, line);
+            file_af << endl << line;
+        }
+        i++;
+    }
+
+    char* a = new char[FileName.size() + 1];
+    strcpy(a, FileName.c_str());
+    a[FileName.size()] = '\0';
+    string filename_new = "Data/SchoolYear/" + Year + "/" + Semester + "/course_info_new.csv";
+    char* b = new char[filename_new.size() + 1];
+    strcpy(b, filename_new.c_str());
+    b[filename_new.size()] = '\0';
+    file_be.close();
+    file_af.close();
+    remove(a);
+    rename(b, a);
+
+    //xoa trong folder course
+    DeleteFile("Data/SchoolYear/" + Year + "/" + Semester + "/Course/" + CourseName + ".csv");
+
+    //xoa trong folder score
+    DeleteFile("Data/SchoolYear/" + Year + "/" + Semester + "/Course/score/" + CourseName + ".csv");
+
+    //Xoa trong folder class
+    fstream file;
+    file.open("Data/SchoolYear/" + Year + "/class_info.csv", ios::in);
+    if (!file.is_open()) {
+        return;
+    }
+    string info;
+    getline(file, info);
+    while (!file.eof()) {
+        getline(file, info);
+        info = info.substr(info.find(",") + 1, info.find(",", info.find(",") + 1) - info.find(",") - 1);
+        fstream fileClass, file_new;
+        fileClass.open("Data/SchoolYear/" + Year + "/" + Semester + "/Class/" + info + ".csv", ios::in);
+        file_new.open("Data/SchoolYear/" + Year + "/" + Semester + "/Class/" + info + "_new.csv", ios::out);
+        if (!fileClass.is_open() || !file_new.is_open()) continue;
+        string line;
+        int i = 1;
+        while (!fileClass.eof()) {
+            getline(fileClass, line);
+            if (line.find("," + CourseName) != -1) {
+                line.erase(line.find("," + CourseName), CourseName.size() + 1);
+            }
+            if (i == 1) {
+                file_new << line;
+                i++;
+            }
+            else file_new << endl << line;
+        }
+        fileClass.close();
+        file_new.close();
+        DeleteFile("Data/SchoolYear/" + Year + "/" + Semester + "/Class/" + info + ".csv");
+        RenameFile("Data/SchoolYear/" + Year + "/" + Semester + "/Class/" + info + "_new.csv", "Data/SchoolYear/" + Year + "/" + Semester + "/Class/" + info + ".csv");
+    }
+    file.close();
+}
+
+void MoveUp(string FileName, int& CurrentLine, int ColumnNum, int IndexB[], int y, string Column[], int LineInConsole, int Width, int x) {
+    GetLineInfo(FileName, CurrentLine + 1, Column, ColumnNum);
+    DrawRectangle(x, y + LineInConsole + 1, Width, 1, 3);
+    TextBgColor(0, 3);
+    for (int i = 0; i < ColumnNum; i++) {
+        PrintText(Column[i], IndexB[i], y + LineInConsole + 1);
+    }
+
+    GetLineInfo(FileName, CurrentLine, Column, ColumnNum);
+    DrawRectangle(x, y + LineInConsole, Width, 1, 14);
+    TextBgColor(0, 14);
+    for (int i = 0; i < ColumnNum; i++) {
+        PrintText(Column[i], IndexB[i], y + LineInConsole);
+    }
+}
+
+void MoveDown(string FileName, int& CurrentLine, int ColumnNum, int IndexB[], int y, string Column[], int LineInConsole, int Width, int x) {
+
+    GetLineInfo(FileName, CurrentLine - 1, Column, ColumnNum);
+    DrawRectangle(x, y - 1 + LineInConsole, Width, 1, 3);
+    TextBgColor(0, 3);
+    for (int i = 0; i < ColumnNum; i++) {
+        PrintText(Column[i], IndexB[i], y + LineInConsole - 1);
+    }
+    GetLineInfo(FileName, CurrentLine, Column, ColumnNum);
+    DrawRectangle(x, y + LineInConsole, Width, 1, 14);
+    TextBgColor(0, 14);
+    for (int i = 0; i < ColumnNum; i++) {
+        PrintText(Column[i], IndexB[i], y + LineInConsole);
+    }
+}
+
+int EditCourse(User A, string& Year, string& Semester) {
+    int checkOut = -1;
+    do {
+        char ch;
+        int line = CountLine("Data/SchoolYear/" + Year + "/" + Semester + "/course_info.csv");
+        int CurrentLine = 2;
+        int y = 11;
+        string column[8];
+        int lineInConsole = 1;
+        int a[8] = { 2,13,32,55,76,91,98,108 };
+        int b[8] = { 1,9,32,63,79,91,101,111 };
+        GetLineInfo("Data/SchoolYear/" + Year + "/" + Semester + "/course_info.csv", CurrentLine, column, 8);
+        DrawRectangle(1, y + lineInConsole, 110, 1, 14);
+        TextBgColor(0, 14);
+        for (int i = 0; i < 8; i++)
+            PrintText(column[i], b[i], y + lineInConsole);
+        do {
+            HidePointer();
+            ch = getch();
+            //[ESC]
+            if (ch == 27) {
+                TextBgColor(0, 15);
+                checkOut = 1;
+                break;
+            }
+            else {
+                if (ch == 72 && CurrentLine > 2) //up
+                {
+                    CurrentLine--;
+                    lineInConsole--;
+                    if (lineInConsole + y <= 11) {
+                        lineInConsole = 12;
+                        DrawRectangle(0, 10, 120, 15, 15);
+                        DrawRectangle(0, 10, 120, 15, 11);
+                        DrawList(8, "Data/SchoolYear/" + Year + "/" + Semester + "/course_info.csv", y, a, b, line, CurrentLine - 11);
+                        GetLineInfo("Data/SchoolYear/" + Year + "/" + Semester + "/course_info.csv", CurrentLine, column, 8);
+                        DrawRectangle(1, y + lineInConsole, 110, 1, 14);
+                        TextBgColor(0, 14);
+                        for (int i = 0; i < 8; i++) {
+                            PrintText(column[i], b[i], y + lineInConsole);
+                        }
+                    }
+                    else
+                        MoveUp("Data/SchoolYear/" + Year + "/" + Semester + "/course_info.csv", CurrentLine, 8, b, y, column, lineInConsole, 110, 1);
+
+                }
+                if (ch == 80 && CurrentLine < line) //down
+                {
+                    CurrentLine++;
+                    lineInConsole++;
+                    if (lineInConsole + y > 23) {
+                        lineInConsole = 1;
+                        DrawRectangle(0, 10, 120, 15, 15);
+                        DrawRectangle(0, 10, 120, 15, 11);
+                        DrawList(8, "Data/SchoolYear/" + Year + "/" + Semester + "/course_info.csv", y, a, b, line, CurrentLine);
+                        GetLineInfo("Data/SchoolYear/" + Year + "/" + Semester + "/course_info.csv", CurrentLine, column, 8);
+                        DrawRectangle(1, y + lineInConsole, 110, 1, 14);
+                        TextBgColor(0, 14);
+                        for (int i = 0; i < 8; i++) {
+                            PrintText(column[i], b[i], y + lineInConsole);
+                        }
+                    }
+                    else
+                        MoveDown("Data/SchoolYear/" + Year + "/" + Semester + "/course_info.csv", CurrentLine, 8, b, y, column, lineInConsole, 110, 1);
+                }
+                if (ch == 13) {
+                    //printtext();
+                    EditInforCourse(y + lineInConsole, CurrentLine, column, Year, Semester);
+                    DrawRectangle(1, y + lineInConsole, 110, 1, 14);
+                    TextBgColor(0, 14);
+                    for (int i = 0; i < 8; i++)
+                        PrintText(column[i], b[i], y + lineInConsole);
+                }
+
+                if (ch == 'c') {
+                    SchoolYear s;
+                    ChangeYearSemester(s);
+                    Year = s.Year;
+                    Semester = s.SemesterSchool.NameSemester;
+                    checkOut = 0;
+                    break;
+                    //editCourse(A, s.year, s.semester.Name);
+                }
+
+                if (ch == 'x') {
+                    DeleteCourse("Data/SchoolYear/" + Year + "/" + Semester + "/course_info.csv", column[0], CurrentLine, Year, Semester);
+                    string FileName = "Data/SchoolYear/" + Year + "/" + Semester + "/course_info.csv";
+                    //drawList(8, FileName , y, a, b, line,CurrentLine-lineInConsole+1);
+                    if (CurrentLine == line) {
+                        CurrentLine = line - 1;
+                        if (lineInConsole == 1) lineInConsole = 12;
+                        else lineInConsole--;
+                    }
+                    line--;
+
+                    DrawRectangle(0, 10, 120, 15, 11);
+                    if (line == 1) {
+                        TextBgColor(4, 15);
+                        PrintText("THERE ISN'T ANY COURSE EXIST, PRESS ENTER TO BACK TO MENU.", 30, 14);
+                        ch = getch();
+                        TextBgColor(0, 15);
+                        checkOut = 1;
+                        break;
+                    }
+                    DrawList(8, FileName, y, a, b, line, CurrentLine - lineInConsole + 1);
+                    DrawRectangle(1, y + lineInConsole, 110, 1, 14);
+                    TextBgColor(0, 14);
+                    GetLineInfo(FileName, CurrentLine, column, 8);
+                    for (int i = 0; i < 8; i++)
+                        PrintText(column[i], b[i], y + lineInConsole);
+                }
+            }
+        } while (true);
+    } while (checkOut == -1);
+    return checkOut;
+}
+
+void DrawList(int ColumnNum, string FileName, int y, int IndexA[], int IndexB[], int Line, int FlagLine) {
+    if (Line == 0 || ColumnNum == 0) return;
+    string* datanew = new string[Line];
+    string* column = new string[ColumnNum];
+    TextBgColor(4, 3);
+
+    GetLineInfo(FileName, 1, column, ColumnNum);
+    for (int i = 0; i < ColumnNum; i++) {
+        PrintText(column[i], IndexA[i], y);
+    }
+    TextBgColor(0, 3);
+    y++;
+    int j = FlagLine, h = 1;
+    while (j <= Line && h <= 12) {
+        GetLineInfo(FileName, j, column, ColumnNum);
+        for (int i = 0; i < ColumnNum; i++) {
+            PrintText(column[i], IndexB[i], y);
+        }
+        y++; j++;
+        h++;
+    }
+}
+
+void ListCourse(User A, string Year, string Semester) {
+
+    char ch;
+    if (stoi(Semester.substr(8, 1), 0, 10) == 0) {
+        TextBgColor(4, 15);
+        PrintText("YOU HAVEN'T CREATED SEMESTER YET, PRESS ENTER TO BACK TO MENU.", 30, 14);
+        ch = getch();
+        TextBgColor(0, 15);
+        return;
+    }
+    int checkOut = -1;
+    do {
+        HidePointer();
+        system("cls");
+        TextBgColor(4, 7);
+        PrintText(" _     ___ ____ _____    ____ ___  _   _ ____  ____  _____ ", 30, 2);
+        PrintText("| |   |_ _/ ___|_   _|  / ___/ _ \\| | | |  _ \\/ ___|| ____|", 30, 3);
+        PrintText("| |    | |\\___ \\ | |   | |  | | | | | | | |_) \\___ \\|  _|  ", 30, 4);
+        PrintText("| |___ | | ___) || |   | |__| |_| | |_| |  _ < ___) | |___ ", 30, 5);
+        PrintText("|_____|___|____/ |_|    \\____\\___/ \\___/|_| \\_\\____/|_____|", 30, 6);
+
+        DrawRectangle(97, 0, 22, 5, 3);
+        TextBgColor(4, 3);
+        PrintText("-[ESC]: BACK TO MENU", 97, 2);
+        PrintText("OR RETURN", 97, 3);
+
+        DrawRectangle(0, 0, 26, 5, 3);
+        TextBgColor(4, 3);
+        PrintText("-[x]: DELETE COURSE", 0, 0.5);
+        PrintText("-[ENTER]: EDIT COURSE", 0, 1.5);
+        PrintText("-USE UP,DOWN,LEFT,RIGHT", 0, 2.5);
+        PrintText("KEY TO MOVE IN EDIT STATUS", 0, 3.5);
+        PrintText("-[c]: CHANGE TIME", 0, 4.5);
+
+        string FileName = "Data/SchoolYear/" + Year + "/" + Semester + "/course_info.csv";
+        int lineNum = CountLine(FileName);
+        if (lineNum == 1) {
+            TextBgColor(4, 15);
+            PrintText("THERE ISN'T ANY COURSE EXIST, PRESS ENTER TO BACK TO MENU.", 30, 14);
+            ch = getch();
+            TextBgColor(0, 15);
+            break;
+        }
+        DrawRectangle(0, 10, 120, 15, 3);
+        int a[8] = { 2,13,32,55,76,91,98,108 };
+        int b[8] = { 1,9,32,63,79,91,101,111 };
+        DrawList(8, FileName, 11, a, b, lineNum, 2);
+        HidePointer();
+        checkOut = EditCourse(A, Year, Semester);
+        TextBgColor(0, 15);
+    } while (checkOut == -1 || checkOut == 0);
+}
+
+void ViewCourse(string year, string semester) {
+    char ch;
+    HidePointer();
+    system("cls");
+    TextBgColor(13, 15);
+    PrintText(" _     ___ ____ _____    ____ ___  _   _ ____  ____  _____", 30, 2);
+    PrintText("| |   |_ _/ ___|_   _|  / ___/ _ \\| | | |  _ \\/ ___|| ____|", 30, 3);
+    PrintText("| |    | |\\___ \\ | |   | |  | | | | | | | |_) \\___ \\|  _|", 30, 4);
+    PrintText("| |___ | | ___) || |   | |__| |_| | |_| |  _ < ___) | |___", 30, 5);
+    PrintText("|_____|___|____/ |_|    \\____\\___/ \\___/|_| \\_\\____/|_____|", 30, 6);
+
+    DrawRectangle(97, 0, 22, 5, 11);
+    TextBgColor(4, 11);
+    PrintText("-[ESC]: BACK TO MENU", 97, 2);
+    PrintText("OR RETURN", 97, 3);
+
+    if (stoi(semester.substr(8, 1), 0, 10) == 0) {
+        TextBgColor(4, 15);
+        PrintText("YOU HAVEN'T CREATED SEMESTER YET, PRESS ENTER TO BACK TO MENU.", 30, 14);
+        ch = getch();
+        TextBgColor(0, 15);
+    }
+    else {
+        int CurrentLine = 2, y = 11;
+        string FileName = "Data/SchoolYear/" + year + "/" + semester + "/course_info.csv";
+        int line = CountLine(FileName);
+        DrawRectangle(0, 10, 120, 15, 11);
+        int a[8] = { 2,13,32,55,76,91,98,108 };
+        int b[8] = { 1,9,32,63,79,91,101,111 };
+        DrawList(8, FileName, 11, a, b, line, 2);
+        HidePointer();
+        do
+        {
+            ch = getch();
+            if (ch == 72 && CurrentLine > 2) //up
+            {
+                CurrentLine -= 12;
+                DrawRectangle(0, 10, 120, 15, 15);
+                DrawRectangle(0, 10, 120, 15, 11);
+                DrawList(8, "Data/SchoolYear/" + year + "/" + semester + "/course_info.csv", y, a, b, line, CurrentLine);
+                TextBgColor(0, 14);
+            }
+            if (ch == 80 && CurrentLine < (line / 12) * 12) //down
+            {
+                CurrentLine += 12;
+                DrawRectangle(0, 10, 120, 15, 15);
+                DrawRectangle(0, 10, 120, 15, 11);
+                DrawList(8, "Data/SchoolYear/" + year + "/" + semester + "/course_info.csv", y, a, b, line, CurrentLine);
+                TextBgColor(0, 14);
+            }
+            if (ch == 'c') {
+                SchoolYear s;
+                ChangeYearSemester(s);
+                ViewCourse(s.Year, s.SemesterSchool.NameSemester);
+            }
+            if (ch == 27) {
+                break;
+            }
+        } while (true);
+        TextBgColor(0, 15);
+    }
+}
+
+bool CheckTimeEnd(string Date, string Month, string Year) {
+    int Monthtmp = stoi(Month, 0, 10);
+    int Yeartmp = stoi(Year, 0, 10);
+    int Datetmp = stoi(Date, 0, 10);
+    time_t now = time(0);
+    tm* ltm = localtime(&now);
+    //Năm hiện tại nhỏ hơn
+    if (ltm->tm_year + 1900 < Yeartmp)
+        return true;
+    else {
+        //Năm hiện tại lớn hơn
+        if (ltm->tm_year + 1900 > Yeartmp)
+            return false;
+        //Năm hiện tại bằng
+        else {
+            //Tháng hiện tại nhỏ hơn
+            if (ltm->tm_mon + 1 < Monthtmp)
+                return true;
+            else {
+                //Tháng hiện tại lớn hơn
+                if (ltm->tm_mon + 1 > Monthtmp)
+                    return false;
+                //Tháng hiện tại bằng
+                else {
+                    if (ltm->tm_mday <= Datetmp)
+                        return true;
+                    else
+                        return false;
+                }
+            }
+        }
+    }
+}
+
+bool CheckTimeStart(string Date, string Month, string Year) {
+    int Monthtmp = stoi(Month, 0, 10);
+    int Yeartmp = stoi(Year, 0, 10);
+    int Datetmp = stoi(Date, 0, 10);
+    time_t now = time(0);
+    tm* ltm = localtime(&now);
+    //Năm hiện tại lớn hơn
+    if (ltm->tm_year + 1900 > Yeartmp)
+        return true;
+    else {
+        //Năm hiện tại nhỏ hơn
+        if (ltm->tm_year + 1900 < Yeartmp)
+            return false;
+        //Năm hiện tại bằng
+        else {
+            //Tháng hiện tại lớn hơn
+            if (ltm->tm_mon + 1 > Monthtmp)
+                return true;
+            else {
+                //Tháng hiện tại nhỏ hơn
+                if (ltm->tm_mon + 1 < Monthtmp)
+                    return false;
+                //Tháng hiện tại bằng
+                else {
+                    if (ltm->tm_mday >= Datetmp)
+                        return true;
+                    else
+                        return false;
+                }
+            }
+        }
+    }
+}
+
+int CheckCourseSession() {
+    string year, semester;
+    DetermineYearSemesterNow(year, semester);
+    if (stoi(semester.substr(8, 1), 0, 10) == 0) {
+        TextBgColor(4, 15);
+        PrintText("HAVEN'T CREATE SEMESTER YET, PRESS ENTER TO BACK TO MENU.", 40, 10);
+        char ch = getch();
+    }
+    else {
+        fstream file;
+        file.open("Data/SchoolYear/" + year + "/" + semester + "/RegistrationCourseSession.txt", ios::in);
+        string data;
+        getline(file, data);
+        if (stoi(data, 0, 10) == 0) return 0;//not open session yet
+        else {
+            getline(file, data);
+            string dateStart = data.substr(12, 10);
+            getline(file, data);
+            string dateEnd = data.substr(9, 10);
+            if (CheckTimeStart(dateStart.substr(0, 2), dateStart.substr(3, 2), dateStart.substr(6, 4)) == false) return -1;//It's not time to start yet
+            else {
+                if (CheckTimeEnd(dateEnd.substr(0, 2), dateEnd.substr(3, 2), dateEnd.substr(6, 4)) == false) return -2;//It was late to register the course
+                else return 1;//can register the course 
+            }
+        }
+    }
+    TextBgColor(0, 15);
+}
