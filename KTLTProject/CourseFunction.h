@@ -1,4 +1,4 @@
-﻿#pragma once
+#pragma once
 #include "Menu.h"
 
 typedef void (*DrawASCII)();
@@ -19,7 +19,7 @@ int MoveAndChoose(int a, string A[], int X, int Y, int dis);
 
 void DrawMenu(string* S, int n, int x, int y, int dis, DrawASCII Fun);
 
-int GetYearData(string* Data1, int* Data2, string FileName);
+int GetYearData(string* Data1, int* data2, string FileName);
 
 void ChangeYearSemester(SchoolYear& SY);
 
