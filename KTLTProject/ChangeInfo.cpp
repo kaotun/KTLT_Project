@@ -4,8 +4,8 @@
 
 void RewriteInfoFile(User Usertmp) {
     fstream FilePrv, FileAft;
-    string OldName = "Data/InformationOfLogin.csv";
-    string NewName = "Data/InformationOfLogin_new.csv";
+    string OldName = "Data\\InformationOfLogin.csv";
+    string NewName = "Data\\loginInfoNew.csv";
     FilePrv.open(OldName, ios::in);
     FileAft.open(NewName, ios::out);
     string temp;
@@ -34,12 +34,14 @@ void RewriteInfoFile(User Usertmp) {
 };
 
 void ChangePassword(User& Usertmp) {
+
+    TextBgColor(3, 0);
     system("cls");
     PrintText(" _____  _____  _____  _____  _____  _____    _____  _____  _____  _____  _ _ _  _____  _____  ____  ", 10, 4);
     PrintText("|     ||  |  ||  _  ||   | ||   __||   __|  |  _  ||  _  ||   __||   __|| | | ||     || __  ||    \\ ", 10, 5);
     PrintText("|   --||     ||     || | | ||  |  ||   __|  |   __||     ||__   ||__   || | | ||  |  ||    -||  |  |", 10, 6);
     PrintText("|_____||__|__||__|__||_|___||_____||_____|  |__|   |__|__||_____||_____||_____||_____||__|__||____/ ", 10, 7);
-    DrawRectangle(47, 15, 27, 12, 11);
+    DrawRectangle(47, 15, 27, 12, 19);
     PrintText("YOUR PASSWORD :", 48, 16);
     PrintText("ENTER NEW PASSWORD :", 48, 19);
     PrintText("ENTER NEW PASSWORD AGAIN :", 48, 22);
