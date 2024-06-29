@@ -18,7 +18,7 @@ void HidePointer();
 
 void ShowPointer();
 
-void DrawAppName(int TextColor, int BgColor);
+//void DrawAppName(int TextColor, int BgColor);
 
 void DrawBoder(int PositionX, int PositionY, int Width, int Height, int Color);
 
