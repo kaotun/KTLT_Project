@@ -1,4 +1,4 @@
-﻿#include "ReadData.h"
+#include "ReadData.h"
 #include <string>
 #include <fstream>
 using namespace std;
@@ -16,7 +16,7 @@ void ReadOneInfo(User& A, ifstream& fIn) {
 }
 
 void ReadInfo(User& A, SchoolYear SY) {
-	string year_path = "Data/SchoolYear/" + SY.Year + '/';
+	string year_path = "Data\\SchoolYear\\" + SY.Year + '\\';
 	string fileName;
 	if (A.role == 1) {
 		fileName = year_path + A.info.Class + CsvTail;
@@ -57,7 +57,7 @@ void ReadCourse(User A, SchoolYear Y)
 	GotoXY(90, 15); std::cout << "Max student";
 	GotoXY(102, 15); std::cout << "Schedule";
 	ifstream fi;
-	string fileName = "Data/SchoolYear/" + Y.Year + "/" + Y.SemesterSchool.NameSemester + "/course_info.csv";
+	string fileName = "Data\\SchoolYear\\" + Y.Year + "\\" + Y.SemesterSchool.NameSemester + "\\course_info.csv";
 	MarkNode* tempo = new MarkNode;
 	tempo = A.info.head;
 	int i = 1;
@@ -157,9 +157,9 @@ void AddTailListMark(MarkNode*& head, string ID, string Name, string NumOfCreadi
 
 int GetCourse(User& A, SchoolYear SY, int Flag) {
 	ifstream f;
-	string semester_path = "Data/SchoolYear/" + SY.Year + '/' + SY.SemesterSchool.NameSemester + '/';
-	string class_path = semester_path + "Class/";
-	string course_path = semester_path + "Course/";
+	string semester_path = "Data\\SchoolYear\\" + SY.Year + '\\' + SY.SemesterSchool.NameSemester + '\\';
+	string class_path = semester_path + "Class\\";
+	string course_path = semester_path + "Course\\";
 	string fileName = class_path + A.info.Class + CsvTail;
 	bool IDflag = false;
 	f.open(fileName, ios::in);
@@ -209,7 +209,7 @@ int GetCourse(User& A, SchoolYear SY, int Flag) {
 						IDtemp += temp1[i];
 					}
 					ifstream fi;
-					string fileName = "Data/SchoolYear/" + SY.Year + "/" + SY.SemesterSchool.NameSemester + "/course_info.csv";
+					string fileName = "Data\\SchoolYear\\" + SY.Year + "\\" + SY.SemesterSchool.NameSemester + "\\course_info.csv";
 					fi.open(fileName, ios::in);
 					string temp;
 					string NumOfCreadit;
@@ -317,8 +317,8 @@ void GetOneScore(MarkNode*& A, string ID, ifstream& fIn) {
 
 void GetScore(User& A, SchoolYear SY, int& i) {
 	ifstream f;
-	string SemesterPath = "Data/SchoolYear/" + SY.Year + '/' + SY.SemesterSchool.NameSemester + '/';
-	string CoursePath = SemesterPath + "Course/score/";
+	string SemesterPath = "Data\\SchoolYear\\" + SY.Year + '\\' + SY.SemesterSchool.NameSemester + '\\';
+	string CoursePath = SemesterPath + "Course\\score\\";
 	i = 0;
 	MarkNode* temp = A.info.head;
 	while (temp != NULL) {
@@ -342,7 +342,7 @@ void GetScore(User& A, SchoolYear SY, int& i) {
 void SaveMark(User& A, Mark* B, int i, SchoolYear SY) {
 	string Str = ',' + A.info.IDSt + ',' + A.info.NameSt + ',' + A.info.Class + ',' + to_string(B[i].MidtermMark) + ',' + to_string(B[i].FinalMark) + ',' + to_string(B[i].OtherMark) + ',' + to_string(B[i].AvgMark);
 	fstream file_prv, file_aft;
-	string fileName = "Data/SchoolYear/" + SY.Year + '/' + SY.SemesterSchool.NameSemester + "/Course/score/" + B[i].ID;
+	string fileName = "Data\\SchoolYear\\" + SY.Year + '\\' + SY.SemesterSchool.NameSemester + "\\Course\\score\\" + B[i].ID;
 	bool flag_first_line = true;
 	string oldName = fileName + CsvTail;
 	string newName = fileName + "new" + CsvTail;
@@ -408,7 +408,7 @@ void InsertMark(string& Data, int Limit, int& Flag) {
 }
 
 Mark* ReadFileScoreOfCourse(SchoolYear SY, string IDCourse, int& n) {
-	string fileName = "Data/SchoolYear/" + SY.Year + '/' + SY.SemesterSchool.NameSemester + "/Course/score/" + IDCourse + CsvTail;
+	string fileName = "Data\\SchoolYear\\" + SY.Year + '\\' + SY.SemesterSchool.NameSemester + "\\Course\\score\\" + IDCourse + CsvTail;
 	ifstream f;
 	f.open(fileName, ios::in);
 	if (!f.good()) {
@@ -439,7 +439,7 @@ Mark* ReadFileScoreOfCourse(SchoolYear SY, string IDCourse, int& n) {
 void SaveMarkWithListCousre(string IDCourse, Mark B, SchoolYear SY) {
 	string Str = ',' + B.ID + ',' + B.Name + ',' + B.C + ',' + to_string(B.MidtermMark) + ',' + to_string(B.FinalMark) + ',' + to_string(B.OtherMark) + ',' + to_string(B.AvgMark);
 	fstream file_prv, file_aft;
-	string fileName = "Data/SchoolYear/" + SY.Year + '/' + SY.SemesterSchool.NameSemester + "/Course/score/" + IDCourse;
+	string fileName = "Data\\SchoolYear\\" + SY.Year + '\\' + SY.SemesterSchool.NameSemester + "\\Course\\score\\" + IDCourse;
 	bool flag_first_line = true;
 	string oldName = fileName + CsvTail;
 	string newName = fileName + "new" + CsvTail;
@@ -476,7 +476,7 @@ void SaveMarkWithListCousre(string IDCourse, Mark B, SchoolYear SY) {
 }
 
 Course* ReadFileListCourse(User A, SchoolYear SY, int& n) {
-	string fileName = "Data/SchoolYear/" + SY.Year + '/' + SY.SemesterSchool.NameSemester + "/course_info" + CsvTail;
+	string fileName = "Data\\SchoolYear\\" + SY.Year + '\\' + SY.SemesterSchool.NameSemester + "\\course_info" + CsvTail;
 	ifstream f;
 	f.open(fileName, ios::in);
 	if (!f.good()) {
@@ -510,7 +510,7 @@ Course* ReadFileListCourse(User A, SchoolYear SY, int& n) {
 }
 
 Course* GetCourseOfStudent(User A, SchoolYear SY, int& n) {
-	string fileName = "Data/SchoolYear/" + SY.Year + '/' + SY.SemesterSchool.NameSemester + "/course_info" + CsvTail;
+	string fileName = "Data\\SchoolYear\\" + SY.Year + '\\' + SY.SemesterSchool.NameSemester + "\\course_info" + CsvTail;
 	ifstream f;
 	f.open(fileName, ios::in);
 	if (!f.good()) {
@@ -555,7 +555,7 @@ Course* GetCourseOfStudent(User A, SchoolYear SY, int& n) {
 }
 
 Data* ReadFileStudentInfoOfCourse(SchoolYear SY, string IDCourse, int& n) {
-	string fileName = "Data/SchoolYear/" + SY.Year + '/' + SY.SemesterSchool.NameSemester + "/Course/" + IDCourse + CsvTail;
+	string fileName = "Data\\SchoolYear\\" + SY.Year + '\\' + SY.SemesterSchool.NameSemester + "\\Course\\" + IDCourse + CsvTail;
 	ifstream f;
 	f.open(fileName, ios::in);
 	if (!f.good()) {
