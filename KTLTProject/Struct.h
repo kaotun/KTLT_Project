@@ -1,7 +1,8 @@
-#pragma once
+#ifndef _STRUCT_H_
+#define _STRUCT_H_
 
 #include <iostream>
-#include "Windows.h"
+#include <Windows.h>
 #include <iomanip>
 #include <cmath>
 #include <fstream>
@@ -64,7 +65,7 @@ struct Semester {
 
 struct SchoolYear {
 	Semester SemesterSchool;
-	string Year;
+	string Year;   //VD: 2023 - 2024
 	int NumOfStudentNow;
 	string DateBegin;
 	string DateEnd;
@@ -73,6 +74,12 @@ struct SchoolYear {
 struct User {
 	string IDUser;
 	string Password;
-	int role;
+	int role;  //0 - giao vien, 1 - sinh vien
 	Data info;
 };
+
+
+#endif // !_STRUCT_H_
+
+
+
