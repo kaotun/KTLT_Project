@@ -32,18 +32,7 @@ void MenuStaff(User& Usertmp)
 		ShowPointer();
 		system("cls");
 		GotoXY(0, 7);
-		/*{
-
-"4. CLASS",
-
-"7. Add student to class",
-,
- "9. Edit student's marks",
- "10. View list of course\, Delete a course\, update course information",
- "11. Export student list",
- "12. Import student list",
- "13. View score board of a course",
- "14. View score board of a class" };*/
+		
 		DrawMenu(MenuStaff, 6, 50, 10, 1, &DrawASCIIStaffMenu);
 		option = MoveAndChoose(6, MenuStaff, 50, 10, 1);
 		switch (option)
@@ -239,11 +228,7 @@ void MenuStudent(User& Usertmp)
 	string menuStudent[] = { "YOUR INFO", "COURSE" , "YOUR RESULTS","LOG OUT" };
 	string MenuStd1[] = { "1. Profile info","2. Change password","3.Back to Menu" };
 	string MenuStd2[] = { "1. Enroll courses","2. Remove course","3. View your list of course","4. Back to Menu" };
-	//, "3. Score board"
-	//, "4. Enroll courses"
-	//, "5. List of enrolled courses"
-	//, "6. Remove courses"
-	//, "7. View your list of course" };
+	
 	do
 	{
 		system("cls");
