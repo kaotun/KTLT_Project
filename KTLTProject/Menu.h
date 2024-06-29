@@ -1,4 +1,5 @@
-#pragma once
+#ifndef _MENU_H_
+#define _MENU_H_
 
 #include "Struct.h"
 
@@ -28,4 +29,5 @@ void DrawASCIIMenuStudent();
 
 void DrawASCIIImport();
 
+#endif // !_MENU_H_
 
