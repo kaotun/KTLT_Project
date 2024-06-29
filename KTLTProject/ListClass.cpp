@@ -59,7 +59,7 @@ int CheckRowInFile(string FileName)
 string CheckSem()
 {
 	fstream Fclass;
-	Fclass.open("Data//year_semester.csv");
+	Fclass.open("Data\\year_semester.csv");
 	string YearTem, SemTem;
 	string CheckSem;
 	while (!Fclass.eof())
@@ -81,7 +81,7 @@ void CreateClassInSemester(string& Year, string& Name)
 	}
 	else
 	{
-		string CreateClass = "Data//SchoolYear//" + Year + "//Semester" + CheckSe + "//Class//" + Name + CsvTail;
+		string CreateClass = "Data\\SchoolYear\\" + Year + "\\Semester" + CheckSe + "\\Class\\" + Name + CsvTail;
 		fstream fCreate;
 		fCreate.open(CreateClass, ios::out);
 		/*fstream fRead;
@@ -102,7 +102,7 @@ void CreateNewClass()
 	TextBgColor(0, 11);
 	DrawRectangle(35, 12, 60, 12, 11);
 	fstream fs;
-	fs.open("Data//year_semester.csv", ios::in);
+	fs.open("Data\\year_semester.csv", ios::in);
 	string tempYear;
 	string tempSemester;
 	while (!fs.eof())
@@ -133,7 +133,7 @@ void CreateNewClass()
 			{
 				fstream file1;
 				bool check = true;
-				file1.open("Data//SchoolYear//" + Year + "//class_info.csv", ios::in);
+				file1.open("Data\\SchoolYear\\" + Year + "\\class_info.csv", ios::in);
 				string stt, NameClass, major, number, year;
 				while (!file1.eof())
 				{
@@ -185,13 +185,13 @@ void CreateNewClass()
 							string yearStudent = { Year[0],Year[1],Year[2],Year[3] };
 
 							fstream file;
-							string filename = "Data//SchoolYear//" + Year + "//class_info.csv";
+							string filename = "Data\\SchoolYear\\" + Year + "\\class_info.csv";
 							int count = CheckRowInFile(filename);
-							file.open("Data//SchoolYear//" + Year + "//class_info.csv", ios::app);
+							file.open("Data\\SchoolYear\\" + Year + "\\class_info.csv", ios::app);
 							file << endl << count + 1 << "," << name << "," << NameMajor << "," << numberStudent << "," << yearStudent;
 							file.close();
 
-							string FileName = "Data//SchoolYear//" + Year + "//" + name + CsvTail;
+							string FileName = "Data\\SchoolYear\\" + Year + "\\" + name + CsvTail;
 							fstream f1;
 							f1.open(FileName, ios::out);
 							f1 << "No" << "," << "ID" << "," << "Name" << "," << "Birth" << "," << "Sex" << "," << "IDSocial";
@@ -246,17 +246,17 @@ void DrawASCIIMenuView()
 void ImportRandom(string& YearCourse, string& Class)
 {
 	fstream ofs, ifs;
-	string NameClass = "Data//SchoolYear//" + YearCourse + "//" + Class + CsvTail;
+	string NameClass = "Data\\SchoolYear\\" + YearCourse + "\\" + Class + CsvTail;
 	ofs.open(NameClass, ios::app);
-	ifs.open("Data//InformationOfNewStudent.csv", ios::in);
+	ifs.open("Data\\InformationOfNewStudent.csv", ios::in);
 	string  NameSt, BirthSt, SexSt, IdSocialSt;
 	int count = CheckRowInFile(NameClass);
 	int IDSt;
 	string CheckYear = { YearCourse };
 	string CheckNameYear = { CheckYear[2] , CheckYear[3] };
 	int MasoNam;
-	//MasoNam = atoi(CheckNameYear.c_str()) * 1000000;
-	MasoNam = 23* 1000000;
+	MasoNam = atoi(CheckNameYear.c_str()) * 1000000;
+	//MasoNam = 23* 1000000;
 	string str = { Class };
 	string CheckNameClass = { str[2] , str[3] , str[4] };
 	string CheckSTTClass = { str[5] };
@@ -339,7 +339,7 @@ void ImportRandom(string& YearCourse, string& Class)
 	}
 	string NumberOfStudent;
 	fstream file2;
-	file2.open("Data//SchoolYear//" + YearCourse + "//class_info.csv", ios::in);
+	file2.open("Data\\SchoolYear\\" + YearCourse + "\\class_info.csv", ios::in);
 	string stt2, NameClass2, major2, number2, year2;
 	while (!file2.eof())
 	{
@@ -354,7 +354,7 @@ void ImportRandom(string& YearCourse, string& Class)
 		}
 	}
 	int CheckNumberOfStudent = atoi(NumberOfStudent.c_str());
-	int countFile = CheckRowInFile("Data//InformationOfNewStudent.csv");
+	int countFile = CheckRowInFile("Data\\InformationOfNewStudent.csv");
 	if (countFile < CheckNumberOfStudent)
 	{
 		GotoXY(43, 21);
@@ -367,7 +367,7 @@ void ImportRandom(string& YearCourse, string& Class)
 		while (count != (CheckNumberOfStudent))
 		{
 			fstream finput;
-			finput.open("Data//InformationOfLogin.csv", ios::app);
+			finput.open("Data\\InformationOfLogin.csv", ios::app);
 			int MSSV = IDSt + count;
 			ofs << endl;
 			ofs << count + 1 << ",";
@@ -388,7 +388,7 @@ void ImportRandom(string& YearCourse, string& Class)
 		ofs.close();
 		string arr[10000];
 		fstream f1;
-		f1.open("Data//InformationOfNewStudent.csv", ios::in);
+		f1.open("Data\\InformationOfNewStudent.csv", ios::in);
 
 		while (!f1.eof())
 		{
@@ -399,7 +399,7 @@ void ImportRandom(string& YearCourse, string& Class)
 		}
 		f1.close();
 		fstream f2;
-		f2.open("Data//InformationOfNewStudent.csv", ios::out);
+		f2.open("Data\\InformationOfNewStudent.csv", ios::out);
 		for (int i = CheckNumberOfStudent; i < countFile; i++)
 		{
 			f2 << arr[i] << endl;
@@ -408,10 +408,10 @@ void ImportRandom(string& YearCourse, string& Class)
 	}
 	string CheckSe = CheckSem();
 	fstream F, FILE;
-	string S = "Data//SchoolYear//" + YearCourse + "//Semester" + CheckSe + "//Class//" + Class + CsvTail;
+	string S = "Data\\SchoolYear\\" + YearCourse + "\\Semester" + CheckSe + "\\Class\\" + Class + CsvTail;
 	F.open(S, ios::app);
 	int countF = CheckRowInFile(S);
-	string SS = "Data//SchoolYear//" + YearCourse + "//" + Class + CsvTail;
+	string SS = "Data\\SchoolYear\\" + YearCourse + "\\" + Class + CsvTail;
 	FILE.open(SS, ios::in);
 	string CheckNo, CheckID, CheckName, CheckBirth, CheckSex, CheckIDso;
 	while (!FILE.eof())
@@ -449,7 +449,7 @@ void CreateAutoClassAndImportRandomInfo()
 	TextBgColor(0, 11);
 	DrawRectangle(35, 12, 60, 12, 11);
 	fstream fs;
-	fs.open("Data//year_semester.csv", ios::in);
+	fs.open("Data\\year_semester.csv", ios::in);
 	string tempYear;
 	string tempSemester;
 	while (!fs.eof())
@@ -471,7 +471,7 @@ void CreateAutoClassAndImportRandomInfo()
 		{
 			fstream file1;
 			bool check = true;
-			file1.open("Data//SchoolYear//" + Year + "//class_info.csv", ios::in);
+			file1.open("Data\\SchoolYear\\" + Year + "\\class_info.csv", ios::in);
 			string stt, NameClass, major, number, year;
 			while (!file1.eof())
 			{
@@ -521,19 +521,19 @@ void CreateAutoClassAndImportRandomInfo()
 						string YearStudent = { Year[0],Year[1],Year[2],Year[3] };
 
 						fstream file;
-						string filename = "Data//SchoolYear//" + Year + "//class_info.csv";
+						string filename = "Data\\SchoolYear\\" + Year + "\\class_info.csv";
 						string CheckYear = { Year[2], Year[3] };
 						for (int i = 1; i <= NumberOfClass; i++)
 						{
 							string s = to_string(i);
 							string NameClasses = CheckYear + name + s;
-							string FileName = "Data//SchoolYear//" + Year + "//" + NameClasses + CsvTail;
+							string FileName = "Data\\SchoolYear\\" + Year + "\\" + NameClasses + CsvTail;
 							fstream f1;
 							f1.open(FileName, ios::out);
 							f1 << "No" << "," << "ID" << "," << "Name" << "," << "Birth" << "," << "Sex" << "," << "IDSocial";;
 							f1.close();
 							int count = CheckRowInFile(filename);
-							file.open("Data//SchoolYear//" + Year + "//class_info.csv", ios::app);
+							file.open("Data\\SchoolYear\\" + Year + "\\class_info.csv", ios::app);
 							file << endl << count << "," << CheckYear << name << i << "," << NameMajor << "," << numberStudent << "," << YearStudent;
 							file.close();
 							ImportRandom(Year, NameClasses);
