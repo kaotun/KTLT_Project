@@ -9,9 +9,8 @@
 void InsertUserName(string& UserName) {
     ShowPointer();
     char index = getch();
-    while (index != 13) {
-        //Backspace
-        if (index == 8) {
+    while (index != 13) {  //Enter
+        if (index == 8) {       //Backspace
             if (UserName.size() > 0) {
                 UserName.pop_back();
                 GotoXY(ReturnX() - 1, ReturnY());
@@ -32,9 +31,8 @@ void InsertPassword(string& Password) {
     ShowPointer();
     Password = "";
     char index = getch();
-    while (index != 13) {
-        //Backspace
-        if (index == 8) {
+    while (index != 13) {    //Enter
+        if (index == 8) {      //Backspace
             if (Password.size() > 0) {
                 Password.pop_back();
                 GotoXY(ReturnX() - 1, ReturnY());
@@ -54,18 +52,16 @@ void InsertPassword(string& Password) {
 void LoginInterFace(User& Usertmp) {
 
     ShowPointer();
-    TextBgColor(2, 0);
+    TextBgColor(3, 0);
     system("cls");
 
     Usertmp.IDUser = Usertmp.Password = "";
-
 
     PrintText("  _   _   ____  __  __  _   _  ____", 2, 15);
     PrintText(" | | | | / ___||  \\/  || | | |/ ___|", 2, 16);
     PrintText(" | |_| || |    | |\\/| || | | |\\___ \\", 2, 17);
     PrintText(" |  _  || |___ | |  | || |_| | ___) |", 2, 18);
     PrintText(" |_| |_| \\____||_|  |_| \\___/ |____/", 2, 19);
-
 
     PrintText("  _____  ___  _____", 86, 15);
     PrintText(" |  ___||_ _||_   _|", 86, 16);
@@ -78,7 +74,6 @@ void LoginInterFace(User& Usertmp) {
     PrintText("| |  | |/ ___ \\| |\\  |/ ___ \\ |_| | |___|  _ <", 38, 3);
     PrintText("|_|  |_/_/   \\_\\_| \\_/_/   \\_\\____|_____|_| \\_\\ ", 38, 4);
 
-
     PrintText(" ____ _____ _   _ ____  _____ _   _ _____", 40, 6);
     PrintText("/ ___|_   _| | | |  _ \\| ____| \\ | |_   _|", 40, 7);
     PrintText("\\___ \\ | | | | | | | | |  _| |  \\| | | |", 40, 8);
@@ -86,7 +81,7 @@ void LoginInterFace(User& Usertmp) {
     PrintText("|____/ |_|  \\___/|____/|_____|_| \\_| |_|", 40, 10);
 
     TextColor(0);
-    DrawRectangle(47, 15, 27, 10, 11);
+    DrawRectangle(47, 15, 27, 10, 19);
     PrintText("USERNAME : ", 48, 16);
     PrintText("PASSWORD : ", 48, 19);
 
@@ -104,11 +99,13 @@ void LoginInterFace(User& Usertmp) {
 
 int CheckLogin(User& Usertmp) {
     fstream file1, file2;
-    file1.open("file_save/login_info.csv", ios::in);
-    file2.open("file_save/login_info.csv", ios::in);
+    file1.open("Data\\InformationOfLogin.csv", ios::in);
+    file2.open("Data\\InformationOfLogin.csv", ios::in);
 
-    if (!file1.is_open() || !file2.is_open())
+    if (!file1.is_open() || !file2.is_open()) {
         cout << "Error File Open";
+        return -1;
+    }
 
     string row, column;
     int caseUser;
