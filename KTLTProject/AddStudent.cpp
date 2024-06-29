@@ -18,14 +18,14 @@ void AddStudentToClass()
 	TextBgColor(0, 15);
 	string YearCourse;
 	string Class;
-	DrawRectangle(35, 11, 60, 5, 11);
+	DrawRectangle(35, 11, 60, 5, 3);
 	GotoXY(43, 11);
 	cout << "Enter School Year:";
 	DrawRectangle(43, 12, 45, 1, 15);
 	GotoXY(43, 12);
 	getline(cin, YearCourse);
 	fstream file;
-	file.open("Data//year_semester.csv", ios::in);
+	file.open("Data\\year_semester.csv", ios::in);
 	string Year;
 	string tempSemester;
 	bool check = false;
@@ -46,7 +46,7 @@ void AddStudentToClass()
 	}
 	if (check == true)
 	{
-		TextBgColor(0, 11);
+		TextBgColor(0, 3);
 		GotoXY(43, 13);
 		cout << "Enter Name Of Class:";
 		DrawRectangle(43, 14, 45, 1, 15);
@@ -54,7 +54,7 @@ void AddStudentToClass()
 		getline(cin, Class);
 		fstream file1;
 		bool check1 = false;
-		file1.open("Data//SchoolYear//" + YearCourse + "//class_info.csv", ios::in);
+		file1.open("Data\\SchoolYear\\" + YearCourse + "\\class_info.csv", ios::in);
 		string stt, NameClass, major, number, year;
 		while (!file1.eof())
 		{
@@ -78,26 +78,26 @@ void AddStudentToClass()
 		{
 			DataBase data;
 			data = Input();
-			string ClassSem = "Data//SchoolYear//" + YearCourse + "//" + Class + CsvTail;
+			string ClassSem = "Data\\SchoolYear\\" + YearCourse + "\\" + Class + CsvTail;
 			fstream file2;
 			int count = CheckRowInFile(ClassSem);
 			file2.open(ClassSem, ios::app);
 			file2 << endl << count + 1 << "," << data.ID << "," << data.Name << "," << data.Birth << "," << data.Sex << "," << data.IDSocial;
 			file2.close();
 			fstream file3;
-			file3.open("Data//InformationOfLogin.csv", ios::app);
+			file3.open("Data\\login_info.csv", ios::app);
 			file3 << endl << data.ID << "," << data.ID << "," << "1" << "," << Class;
 			file3.close();
 
 			string CheckSe = CheckSem();
 			fstream F, FILE;
-			string S = "Data//SchoolYear//" + YearCourse + "//Semester" + CheckSe + "//Class//" + Class + CsvTail;
+			string S = "Data\\SchoolYear\\" + YearCourse + "\\Semester" + CheckSe + "\\Class\\" + Class + CsvTail;
 			F.open(S, ios::app);
 			F << data.ID << endl;
-			int countFile = CheckRowInFile("Data//InformationOfNewStudent.csv");
+			int countFile = CheckRowInFile("Data\\InformationOfNewStudent.csv");
 			string checkName[1000], checkBirth[1000], checkSex[1000], checkIDso[1000];
 			fstream File;
-			File.open("Data//InformationOfNewStudent.csv", ios::in);
+			File.open("Data\\InformationOfNewStudent.csv", ios::in);
 			int countRow = 1;
 			int Dem = 0;
 			while (!File.eof())
@@ -118,7 +118,7 @@ void AddStudentToClass()
 			}
 			string arr[1000];
 			fstream FIle;
-			FIle.open("Data//InformationOfNewStudent.csv", ios::in);
+			FIle.open("Data\\InformationOfNewStudent.csv", ios::in);
 			while (!FIle.eof())
 			{
 				for (int i = 0; i <= countFile; i++)
@@ -130,7 +130,7 @@ void AddStudentToClass()
 			if (Dem != countFile)
 			{
 				fstream FIle;
-				FIle.open("Data//InformationOfNewStudent.csv", ios::out);
+				FIle.open("Data\\InformationOfNewStudent.csv", ios::out);
 				for (int i = 0; i < Dem - 2; i++)
 				{
 					FIle << arr[i] << endl;
@@ -156,14 +156,14 @@ void AddRandomInfoStudentToClass()
 	TextBgColor(5, 15);
 	string YearCourse;
 	string Class;
-	DrawRectangle(35, 11, 60, 7, 11);
+	DrawRectangle(35, 11, 60, 7, 3);
 	GotoXY(43, 11);
 	cout << "Enter School Year:";
 	DrawRectangle(43, 12, 45, 1, 15);
 	GotoXY(43, 12);
 	getline(cin, YearCourse);
 	fstream file;
-	file.open("Data//year_semester.csv", ios::in);
+	file.open("Data\\year_semester.csv", ios::in);
 	string Year;
 	string tempSemester;
 	bool check = false;
@@ -184,7 +184,7 @@ void AddRandomInfoStudentToClass()
 	}
 	if (check == true)
 	{
-		TextBgColor(0, 11);
+		TextBgColor(0, 3);
 		GotoXY(43, 13);
 		cout << "Enter Name Of Class:";
 		DrawRectangle(43, 14, 45, 1, 15);
@@ -192,7 +192,7 @@ void AddRandomInfoStudentToClass()
 		getline(cin, Class);
 		fstream file1;
 		bool check1 = false;
-		file1.open("Data//SchoolYear//" + YearCourse + "//class_info.csv", ios::in);
+		file1.open("Data\\SchoolYear\\" + YearCourse + "\\class_info.csv", ios::in);
 		string stt, NameClass, major, number, year;
 		while (!file1.eof())
 		{
