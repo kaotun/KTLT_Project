@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
     <Filter Include="Source Files">
@@ -15,51 +15,66 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Struct.h">
+    <ClInclude Include="include\Struct.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="ChangeInfo.h">
+    <ClInclude Include="include\ChangeInfo.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Login.h">
+    <ClInclude Include="include\Login.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="ConsoleProcess.h">
+    <ClInclude Include="include\ConsoleProcess.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Menu.h">
+    <ClInclude Include="include\Menu.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="StaffFunction.h">
+    <ClInclude Include="include\StaffFunction.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="ListClass.h">
+    <ClInclude Include="include\ListClass.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="CourseFunction.h">
+    <ClInclude Include="include\CourseFunction.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="AddStudent.h">
+    <ClInclude Include="include\AddStudent.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="ReadData.h">
+    <ClInclude Include="include\ReadData.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Menu.cpp">
+    <ClCompile Include="src\Main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Login.cpp">
+    <ClCompile Include="src\Menu.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="ConsoleProcess.cpp">
+    <ClCompile Include="src\Login.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="ChangeInfo.cpp">
+    <ClCompile Include="src\ConsoleProcess.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="AddStudent.cpp">
+    <ClCompile Include="src\ChangeInfo.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\AddStudent.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\ReadData.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\StaffFunction.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\CourseFunction.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\ListClass.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

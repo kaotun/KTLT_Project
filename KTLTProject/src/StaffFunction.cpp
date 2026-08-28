@@ -1496,6 +1496,7 @@ int CheckCourseSession() {
         }
     }
     TextBgColor(0, 15);
+    return 0;
 }
 
 void ExportScoreBoardInterface(User A, string Year, string Semester, int CurrentLine, int LineInConsole) {
@@ -1864,7 +1865,7 @@ void ListClass(User A, SchoolYear Yeartmp, FunShowClass Fun) {
         int y = 11;
         DrawRectangle(8, 10, 95, 15, 3);
         int a[5] = { 11,17,33,65,90 };
-        int b[5] = { 11.5,18.5,33,72,90 };
+        int b[5] = { 11,18,33,72,90 };
         DrawList(5, FileName, y, a, b, lineNum, 2);
         HidePointer();
 
@@ -2299,7 +2300,7 @@ void ListClassUseFor14(SchoolYear Y) {
     int y = 11;
     DrawRectangle(8, 10, 95, 15, 11);
     int a[5] = { 11,17,33,65,90 };
-    int b[5] = { 11.5,18.5,33,72,90 };
+    int b[5] = { 11,18,33,72,90 };
     DrawList(5, FileName, y, a, b, lineNum, 2);
     HidePointer();
 

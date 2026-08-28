@@ -45,7 +45,7 @@ void ReadCourse(User A, SchoolYear Y)
 	system("cls");
 	TextBgColor(4, 7);
 	PrintText(".-.  .-. .----. .-. .-..----.     .---.  .----. .-. .-..----.  .----..----.", 20, 4);
-	PrintText(" \\ \\/ / /  {}  \\| { } || {}  }   /  ___\}/  {}  \\| { } || {}  \}{ {__  | {__  ", 20, 5);
+	PrintText(" \\ \\/ / /  {}  \\| { } || {}  }   /  ___}/  {}  \\| { } || {}  }{ {__  | {__  ", 20, 5);
 	PrintText("  }  {  \\      /| {_} || .-. \\   \\     }\\      /| {_} || .-. \\.-._} }| {__ ", 20, 6);
 	PrintText("  `--'   `----' `-----'`-' `-'    `---'  `----' `-----'`-' `-'`----' `----'", 20, 7);
 	DrawRectangle(1, 14, 115, 2, 3);
@@ -237,7 +237,7 @@ int GetCourse(User& A, SchoolYear SY, int Flag) {
 			return 0;
 		}
 	}
-
+	return 0;
 }
 
 void BackASemester(SchoolYear& SY) {

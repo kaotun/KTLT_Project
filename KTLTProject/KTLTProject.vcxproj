@@ -76,6 +76,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
+      <AdditionalIncludeDirectories>include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -90,6 +91,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
+      <AdditionalIncludeDirectories>include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -104,6 +106,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
+      <AdditionalIncludeDirectories>include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -118,6 +121,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
+      <AdditionalIncludeDirectories>include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -127,23 +131,28 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="AddStudent.h" />
-    <ClInclude Include="ChangeInfo.h" />
-    <ClInclude Include="ConsoleProcess.h" />
-    <ClInclude Include="CourseFunction.h" />
-    <ClInclude Include="ListClass.h" />
-    <ClInclude Include="Login.h" />
-    <ClInclude Include="Menu.h" />
-    <ClInclude Include="ReadData.h" />
-    <ClInclude Include="StaffFunction.h" />
-    <ClInclude Include="Struct.h" />
+    <ClInclude Include="include\AddStudent.h" />
+    <ClInclude Include="include\ChangeInfo.h" />
+    <ClInclude Include="include\ConsoleProcess.h" />
+    <ClInclude Include="include\CourseFunction.h" />
+    <ClInclude Include="include\ListClass.h" />
+    <ClInclude Include="include\Login.h" />
+    <ClInclude Include="include\Menu.h" />
+    <ClInclude Include="include\ReadData.h" />
+    <ClInclude Include="include\StaffFunction.h" />
+    <ClInclude Include="include\Struct.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="AddStudent.cpp" />
-    <ClCompile Include="ChangeInfo.cpp" />
-    <ClCompile Include="ConsoleProcess.cpp" />
-    <ClCompile Include="Login.cpp" />
-    <ClCompile Include="Menu.cpp" />
+    <ClCompile Include="src\AddStudent.cpp" />
+    <ClCompile Include="src\ChangeInfo.cpp" />
+    <ClCompile Include="src\ConsoleProcess.cpp" />
+    <ClCompile Include="src\CourseFunction.cpp" />
+    <ClCompile Include="src\ListClass.cpp" />
+    <ClCompile Include="src\Login.cpp" />
+    <ClCompile Include="src\Main.cpp" />
+    <ClCompile Include="src\Menu.cpp" />
+    <ClCompile Include="src\ReadData.cpp" />
+    <ClCompile Include="src\StaffFunction.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
