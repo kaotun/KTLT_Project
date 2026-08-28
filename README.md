@@ -16,8 +16,7 @@ Hệ thống quản lý sinh viên và đăng ký môn học, xây dựng bằng
 ## Cấu Trúc Thư Mục
 
 ```
-KTLTProject/
-|
+KTLT_Project/
 |-- src/              <- Toàn bộ mã nguồn (.cpp)
 |   |-- Main.cpp
 |   |-- Menu.cpp
@@ -50,6 +49,8 @@ KTLTProject/
 |   `-- Score/
 |
 |-- KTLTProject.vcxproj
+|-- KTLTProject.vcxproj.filters
+|-- ProjectUpGithub.sln
 |-- README.md
 `-- .gitignore
 ```
