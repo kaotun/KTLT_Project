@@ -41,7 +41,7 @@ KTLT_Project/
 |   |-- AddStudent.h
 |   `-- ChangeInfo.h
 |
-|-- Data/             <- Cơ sở dữ liệu CSV
+|-- data/             <- Cơ sở dữ liệu CSV
 |   |-- InformationOfLogin.csv
 |   |-- InformationOfNewStudent.csv
 |   |-- year_semester.csv
